@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './frontend/pages/Home'
 
-function App() {
+// function App() {
+export default function App() {
   return (
-    // <React.StrictMode>
-    // <Header />
     <BrowserRouter>
-      
       <Routes>
-        <Route path="/" element={        <div>hi</div>
-} />
-        {/* <Route path="/survey" element={<Survey />} /> */}
+        <Route exact path="/" element={<Home/>} />
       </Routes>
     </BrowserRouter>
     // document.getElementById('root'),
   )
 }
 
-export default App;
+// export default App;
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(<App />)
