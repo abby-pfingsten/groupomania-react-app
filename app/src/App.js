@@ -1,9 +1,9 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+// import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './frontend/pages/Home'
 import Layout from './frontend/pages/Layout'
-import Contact from './frontend/pages/Contact'
+import Profile from './frontend/pages/Profile'
 
 function App() {
   // export default function App() {
@@ -12,7 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="contact" element={<Contact />} />
+          <Route exact path="contact" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>

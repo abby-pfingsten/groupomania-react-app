@@ -1,16 +1,20 @@
 import { Outlet, Link } from 'react-router-dom'
+import '../styles/Layout.scss'
+import logo from '../images/icon-left-font.png'
 
 function Layout() {
   return (
     <>
       <nav>
-        <ul>
+        <ul className="navigation-layout">
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/">
+              <img src={logo} alt="Groupomania Logo"></img>
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/blogs">Blogs</Link>
-          </li>
+          </li> */}
           <li>
             <Link to="/contact">Contact</Link>
           </li>
