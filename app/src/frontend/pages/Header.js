@@ -1,21 +1,17 @@
 import { Outlet, Link } from 'react-router-dom'
-import '../styles/Header.scss'
-import logo from '../images/icon-left-font.png'
+import '../styles/sass/Header.scss'
+import logo from '../images/icon-left-font-monochrome-black.svg'
 import { useState } from 'react'
 
 function Header() {
-  const searchParams = new URL(document.URL)
-
   const urlParams = new URLSearchParams(window.location.search)
 
+  // this is to capture the state change of what
+  // is being typed into the search box
   const [searchText, setSearchText] = useState(urlParams.get('search') ?? '')
 
-  // const urlParams = new URLSearchParams(window.location.search)
-
-  // urlParams.set('order', 'date')
-
-  // window.location.search = urlParams
-
+  // this is to capture the actual text and update
+  // the url
   const onChangeSearchText = () => {
     if (searchText.length !== 0) {
       urlParams.set('search', searchText)
@@ -26,8 +22,6 @@ function Header() {
     }
   }
 
-  console.log(searchParams)
-
   return (
     <>
       <nav>
@@ -37,7 +31,7 @@ function Header() {
               <img src={logo} alt="Groupomania Logo"></img>
             </Link>
           </li>
-          <li>
+          <li className="navigation-layout__search">
             {' '}
             <input
               type="text"
@@ -45,11 +39,11 @@ function Header() {
               value={searchText}
             />
             <button type="submit" onClick={onChangeSearchText}>
-              Click Me{' '}
+              Search{' '}
             </button>
           </li>
-          <li>
-            <Link to="/contact">Contact</Link>
+          <li className="navigation-layout__profile">
+            <Link to="/profile">Profile</Link>
           </li>
         </ul>
       </nav>
