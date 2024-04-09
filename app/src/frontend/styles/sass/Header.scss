@@ -3,10 +3,13 @@
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
-  // @include mobile-only {
-  //   padding-left: 10px;
-  // }
-  & img {
+  // @include desktop-only
+  padding-left: 40px;
+  padding-right: 40px;
+
+    //   padding-left: 10px;
+    // }
+    & img {
     width: 50%;
   }
   &__profile a {

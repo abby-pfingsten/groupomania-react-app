@@ -2,6 +2,8 @@ import { Outlet, Link } from 'react-router-dom'
 import '../styles/sass/Header.scss'
 import logo from '../images/icon-left-font-monochrome-black.svg'
 import { useState } from 'react'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 function Header() {
   const urlParams = new URLSearchParams(window.location.search)
