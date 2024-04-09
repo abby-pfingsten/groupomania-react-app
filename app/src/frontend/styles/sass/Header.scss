@@ -5,9 +5,14 @@ $navy-color: rgb(44, 63, 121);
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
+
   // @include desktop-only
   padding-left: 40px;
   padding-right: 40px;
+  &__mobile {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
   & img {
     width: 50%;
   }
@@ -19,12 +24,11 @@ $navy-color: rgb(44, 63, 121);
       width: 400px;
     }
   }
-    &__searchm {
+  &__search-mobile {
     display: flex;
     flex-direction: row;
-    // @include desktop-only
-  
   }
+
   &__profile a {
     text-decoration: none;
     color: $navy-color;

@@ -1,17 +1,19 @@
 import { Outlet, Link } from 'react-router-dom'
 import '../styles/sass/Header.scss'
-import logo from '../images/icon-left-font-monochrome-black.svg'
-import { useState, useEffect } from 'react'
+import textLogo from '../images/icon-left-font-monochrome-black.svg'
+import iconLogo from '../images/icon.svg'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { faX } from '@fortawesome/free-solid-svg-icons'
+// import { icon } from '@fortawesome/fontawesome-svg-core'
 
 function Header() {
   /* Constants */
   const urlParams = new URLSearchParams(window.location.search)
   const [searchText, setSearchText] = useState(urlParams.get('search') ?? '')
   const [click, setClick] = useState(false)
-  const [searchBar, setSearchBar] = useState(true)
+  const [mobileHeader, setMobileHeader] = useState(false)
 
   /* Font Awesome */
   const faBarsElement = <FontAwesomeIcon icon={faBars} />
@@ -34,31 +36,36 @@ function Header() {
     setClick(!click)
   }
 
-  const showSearchBar = () => {
+  const showMobileHeader = () => {
     if (window.innerWidth <= 960) {
-      setSearchBar(false)
+      setMobileHeader(true)
     } else {
-      setSearchBar(true)
+      setMobileHeader(false)
     }
   }
 
-  useEffect(() => {
-    showSearchBar()
-  }, [])
-
-  window.addEventListener('resize', showSearchBar)
+  window.addEventListener('resize', showMobileHeader)
 
   return (
     <>
       <nav>
-        <ul className="nav-layout">
+        <ul
+          className={
+            mobileHeader ? 'nav-layout' : 'nav-layout__mobile'
+          }
+        >
           <li>
             <Link to="/">
-              <img src={logo} alt="Groupomania Logo"></img>
+              <img
+                src={mobileHeader ? iconLogo : textLogo}
+                alt="Groupomania Logo"
+              ></img>
             </Link>
           </li>
           <li
-            className={searchBar ? 'nav-layout__search' : 'nav-layout__searchm'}
+            className={
+              mobileHeader ? 'nav-layout__search-mobile' : 'nav-layout__search'
+            }
           >
             {' '}
             <input
