@@ -1,3 +1,5 @@
+$navy-color: rgb(44, 63, 121);
+
 .navigation-layout {
   display: flex;
   flex-direction: row;
@@ -6,15 +8,21 @@
   // @include desktop-only
   padding-left: 40px;
   padding-right: 40px;
-
-    //   padding-left: 10px;
-    // }
-    & img {
+  & img {
     width: 50%;
+  }
+  &__search {
+    display: flex;
+    flex-direction: row;
+    // @include desktop-only
+    & input {
+      width: 400px;
+    }
   }
   &__profile a {
     text-decoration: none;
-    color: black;
+    color: $navy-color;
+    font-size: 30px;
     // @include desktop-only {
     //   padding-right: 30px;
     // }

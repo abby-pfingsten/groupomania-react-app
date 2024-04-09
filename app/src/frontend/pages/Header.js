@@ -2,8 +2,8 @@ import { Outlet, Link } from 'react-router-dom'
 import '../styles/sass/Header.scss'
 import logo from '../images/icon-left-font-monochrome-black.svg'
 import { useState } from 'react'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 function Header() {
   const urlParams = new URLSearchParams(window.location.search)
@@ -24,6 +24,8 @@ function Header() {
     }
   }
 
+  const faUserElement = <FontAwesomeIcon icon={faUser} />
+
   return (
     <>
       <nav>
@@ -36,6 +38,7 @@ function Header() {
           <li className="navigation-layout__search">
             {' '}
             <input
+              placeholder='Search Groupomania...'
               type="text"
               onChange={(e) => setSearchText(e.target.value)}
               value={searchText}
@@ -45,7 +48,7 @@ function Header() {
             </button>
           </li>
           <li className="navigation-layout__profile">
-            <Link to="/profile">Profile</Link>
+            <Link to="/profile">{faUserElement} </Link>
           </li>
         </ul>
       </nav>
