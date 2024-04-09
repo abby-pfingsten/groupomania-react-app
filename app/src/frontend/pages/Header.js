@@ -49,18 +49,24 @@ function Header() {
   return (
     <>
       <nav>
+        <Link to="/">
+          <img
+            src={mobileHeader ? iconLogo : textLogo}
+            alt="Groupomania Logo"
+          ></img>
+        </Link>
         <ul
           className={
-            mobileHeader ? 'nav-layout' : 'nav-layout__mobile'
+            mobileHeader ? 'nav-layout nav-layout__mobile' : 'nav-layout'
           }
         >
           <li>
-            <Link to="/">
+            {/* <Link to="/">
               <img
                 src={mobileHeader ? iconLogo : textLogo}
                 alt="Groupomania Logo"
               ></img>
-            </Link>
+            </Link> */}
           </li>
           <li
             className={

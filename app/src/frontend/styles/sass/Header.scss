@@ -5,13 +5,11 @@ $navy-color: rgb(44, 63, 121);
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
-
-  // @include desktop-only
   padding-left: 40px;
   padding-right: 40px;
   &__mobile {
-    padding-left: 0px;
-    padding-right: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
   & img {
     width: 50%;
