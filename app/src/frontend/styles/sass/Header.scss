@@ -17,7 +17,6 @@ $navy-color: rgb(44, 63, 121);
   &__search {
     display: flex;
     flex-direction: row;
-    // @include desktop-only
     & input {
       width: 400px;
     }
@@ -27,12 +26,8 @@ $navy-color: rgb(44, 63, 121);
     flex-direction: row;
   }
 
-  &__profile a {
-    text-decoration: none;
+  &__menu a {
     color: $navy-color;
     font-size: 30px;
-    // @include desktop-only {
-    //   padding-right: 30px;
-    // }
   }
 }
