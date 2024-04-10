@@ -1,4 +1,4 @@
-import "../styles/sass/Home.scss"
+import "../styles/sass/_home.scss"
 
 
 function Home() {

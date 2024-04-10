@@ -1,7 +1,10 @@
 function Login() {
-    return (
-        <div>hello</div>
-    )
+  return (
+    <>
+      {" "}
+      <div> login</div>
+    </>
+  )
 }
 
 export default Login

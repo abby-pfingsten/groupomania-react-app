@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom"
-import "../styles/sass/Header.scss"
+import "../styles/sass/_header.scss"
 import textLogo from "../images/icon-left-font-monochrome-black.svg"
 import iconLogo from "../images/icon.svg"
 import { useState } from "react"
