@@ -1,0 +1,14 @@
+.signup-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 10px;
+  &__logo {
+    width: 50%;
+  }
+}
+
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
