@@ -13,10 +13,10 @@ const express = require("express");
 
 // // const userRoutes = require("./routes/user");
 const app = express();
+require("./models")
 
-
-const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
+// const { Sequelize } = require('sequelize');
+// const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
 
 // try {
 //   await sequelize.authenticate();
