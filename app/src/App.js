@@ -1,6 +1,7 @@
 // import React, { useState } from 'react'
 // import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
+import AccountHeader from "./frontend/pages/AccountHeader"
 import Header from "./frontend/pages/Header"
 import Login from "./frontend/pages/Login"
 import Signup from "./frontend/pages/Signup"
@@ -12,8 +13,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="signup" element={<Signup />} />
+        <Route exact path="account" element={<AccountHeader />} />
         <Route exact path="login" element={<Login />} />
+        <Route exact path="signup" element={<Signup />} />
+
+        <Route exact path="account/login" element={<Login />} />
         <Route path="/" element={<Header />}>
           <Route exact path="/" element={<Home />} />
           <Route exact path="profile" element={<Profile />} />

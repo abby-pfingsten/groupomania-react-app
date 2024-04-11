@@ -1,16 +1,17 @@
-import textLogo from "../images/icon-left-font-monochrome-black.svg"
+// import textLogo from "../images/icon-left-font-monochrome-black.svg"
 import "../styles/sass/_signup.scss"
-
+import AccountHeader from "./AccountHeader"
 function Signup() {
   return (
     <>
-      <header className="signup-header">
+      {/* <header className="signup-header">
         <img
           src={textLogo}
           alt="Groupomania Logo"
           className="signup-header__logo"
         ></img>
-      </header>
+      </header> */}
+      <AccountHeader />
       <div className="signup-form">
         <form className="signup-form">
           <label>
