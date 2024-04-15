@@ -3,8 +3,12 @@ function SignupLogin({ type }) {
     <div>
       <form className="signup-form">
         <label>
+          Name:
+          <input type="text"></input>
+        </label>
+        <label>
           Email:
-          <input type="text" label="Username"></input>
+          <input type="text"></input>
         </label>
         <label>
           Password:
