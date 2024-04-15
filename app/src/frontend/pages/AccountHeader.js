@@ -4,16 +4,17 @@ import textLogo from "../images/icon-left-font-monochrome-black.svg"
 function AccountHeader() {
   return (
     <>
-      <header className="signup-header">
+      <header className="header">
         <img
           src={textLogo}
           alt="Groupomania Logo"
-          className="signup-header__logo"
+          className="header__logo"
         ></img>
+        <div className="header__links">
+          <Link to="/signup">Signup</Link>
+          <Link to="/login">Login</Link>
+        </div>
       </header>{" "}
-      <div>
-        <Link to="/git stsignup">merr</Link>
-      </div>
     </>
   )
 }
