@@ -6,15 +6,8 @@ import SignupLogin from "../components/SignupLogin"
 function Signup() {
   return (
     <>
-      {/* <header className="signup-header">
-        <img
-          src={textLogo}
-          alt="Groupomania Logo"
-          className="signup-header__logo"
-        ></img>
-      </header> */}
       <AccountHeader />
-      <SignupLogin />
+      <SignupLogin type="Signup" />
     </>
   )
 }
