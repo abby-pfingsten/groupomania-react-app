@@ -1,6 +1,6 @@
 function SignupLogin({ type }) {
   return (
-    <div className="signup-form">
+    <div>
       <form className="signup-form">
         <label>
           Email:
@@ -10,7 +10,7 @@ function SignupLogin({ type }) {
           Password:
           <input type="text"></input>
         </label>
-              <button type="submit">{type}</button>
+        <button type="submit">{type}</button>
       </form>
     </div>
   )
