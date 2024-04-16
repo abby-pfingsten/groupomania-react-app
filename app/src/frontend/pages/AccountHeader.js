@@ -11,7 +11,7 @@ function AccountHeader() {
           className="header__logo"
         ></img>
         <div className="header__links">
-          <Link to="/signup">Signup</Link>
+          <Link to="/auth/signup">Signup</Link>
           <Link to="/login">Login</Link>
         </div>
       </header>{" "}
