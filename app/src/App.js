@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="account" element={<AccountHeader />} />
-        <Route exact path="login" element={<Login />} />
+        <Route exact path="auth/login" element={<Login />} />
         <Route exact path="auth/signup" element={<Signup />} />
 
         <Route path="/" element={<Header />}>
