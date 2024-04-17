@@ -1,7 +1,12 @@
 import axios from "axios"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+
 
 function SignupLogin({ type }) {
+
+      const navigate = useNavigate()
+
   function handleSubmit(e) {
     // Prevent the default submit and page reload
     e.preventDefault()
@@ -42,7 +47,9 @@ function SignupLogin({ type }) {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        <button type="submit">{type}</button>
+        <button type="submit" onClick={() => navigate("/")}>
+          {type}
+        </button>
       </form>
     </div>
     // <div>
