@@ -13,13 +13,14 @@ function SignupLogin({ type }) {
         // Handle response
       })
   }
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const [name, setName] = useState({})
+  const [email, setEmail] = useState({})
+  const [password, setPassword] = useState({})
 
   return (
     <div>
       <form className="signup-form" method="post" onSubmit={handleSubmit}>
+        {/* how do i conditionally render this for signup */}
         <label>Name:</label>
         <input
           type="text"
