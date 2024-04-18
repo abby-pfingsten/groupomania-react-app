@@ -2,10 +2,8 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-
 function SignupLogin({ type }) {
-
-      const navigate = useNavigate()
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     // Prevent the default submit and page reload
@@ -15,15 +13,20 @@ function SignupLogin({ type }) {
       .post("http://localhost:3001/api/auth/login", { name, email, password })
       .then((response) => {
         console.log(response)
+        setValidUser(true)
+        console.log(validUser)
+        navigate("/")
         // Handle response
       })
   }
   const [name, setName] = useState({})
   const [email, setEmail] = useState({})
   const [password, setPassword] = useState({})
+  const [validUser, setValidUser] = useState(false)
 
   return (
     <div>
+      {/* onsubmit doesnt work but onclick does */}
       <form className="signup-form" method="post" onSubmit={handleSubmit}>
         {/* how do i conditionally render this for signup */}
         <label>Name:</label>
@@ -47,7 +50,7 @@ function SignupLogin({ type }) {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         ></input>
-        <button type="submit" onClick={() => navigate("/")}>
+        <button type="submit" onClick={handleSubmit}>
           {type}
         </button>
       </form>
