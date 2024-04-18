@@ -9,18 +9,30 @@ function SignupLogin({ type }) {
     // Prevent the default submit and page reload
     e.preventDefault()
     // Handle validations
-    axios
-      .post("http://localhost:3001/api/auth/login", { email, password })
-      .then((response) => {
-        console.log(response)
-        // setValidUser(true)
-        // console.log(validUser)
-        navigate("/")
-        // Handle response
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
+    if (type === "Login") {
+      axios
+        .post("http://localhost:3001/api/auth/login", { email, password })
+        .then((response) => {
+          navigate("/")
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    } else {
+      axios
+        .post("http://localhost:3001/api/auth/signup", {
+          name,
+          email,
+          password,
+        })
+        .then((response) => {
+          navigate("/")
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   }
   const [name, setName] = useState({})
   const [email, setEmail] = useState({})
@@ -33,7 +45,12 @@ function SignupLogin({ type }) {
         {type === "Signup" ? (
           <>
             <label>Name:</label>
-            <input type="text" name="name" id="name"></input>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              onChange={(e) => setName(e.target.value)}
+            ></input>
           </>
         ) : (
           <> </>
