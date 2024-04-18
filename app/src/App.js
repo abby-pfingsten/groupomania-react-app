@@ -1,8 +1,4 @@
-// import React, { useState } from 'react'
-// import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import AccountHeader from "./frontend/pages/AccountHeader"
-import Header from "./frontend/pages/Header"
 import Login from "./frontend/pages/Login"
 import Signup from "./frontend/pages/Signup"
 import Home from "./frontend/pages/Home"

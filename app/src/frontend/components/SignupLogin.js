@@ -6,18 +6,24 @@ function SignupLogin({ type }) {
   const navigate = useNavigate()
 
   function handleSubmit(e) {
-    // Prevent the default submit and page reload
     e.preventDefault()
-    // Handle validations
 
     if (type === "Login") {
       axios
         .post("http://localhost:3001/api/auth/login", { email, password })
         .then((response) => {
+          // console.log()
+          const token = response[["data"]]
+          console.log(token)
+          localStorage.setItem("userToken", JSON.stringify(token))
+
           navigate("/")
         })
         .catch((error) => {
           console.log(error)
+          // for logging in, we want to send a message telling
+          // the user that their email or password is wrong
+          setLoginError(true)
         })
     } else {
       axios
@@ -31,13 +37,17 @@ function SignupLogin({ type }) {
         })
         .catch((error) => {
           console.log(error)
+          // in the signup method, we would only have an error
+          // if the email was duplicated, so we want to show a message
+          setEmailError(true)
         })
     }
   }
   const [name, setName] = useState({})
   const [email, setEmail] = useState({})
   const [password, setPassword] = useState({})
-  // const [validUser, setValidUser] = useState(false)
+  const [emailError, setEmailError] = useState(false)
+  const [loginError, setLoginError] = useState(false)
 
   return (
     <div>
@@ -69,47 +79,23 @@ function SignupLogin({ type }) {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         ></input>
+        {emailError ? (
+          <>
+            <div>An account already exists with this email </div>
+          </>
+        ) : (
+          <></>
+        )}
+        {loginError ? (
+          <>
+            <div>Your email or password is incorrect</div>
+          </>
+        ) : (
+          <></>
+        )}
         <button type="submit">{type}</button>
       </form>
     </div>
-    // <div>
-    //   <form action="" id="login" method="post" onSubmit={handleSubmit}>
-    //     <h1>Login</h1>
-    //     <p className="item">
-    //       <label> Name </label>
-    //       <input
-    //         // type="password"
-    //         // name="password"
-    //         id="name"
-    //         value={name}
-    //         onChange={(e) => setName(e.target.value)}
-    //       />
-    //     </p>
-    //     <p className="item">
-    //       <label> Email </label>
-    //       <input
-    //         type="email"
-    //         name="email"
-    //         id="email"
-    //         value={email}
-    //         onChange={(e) => setEmail(e.target.value)}
-    //       />
-    //     </p>
-    //     <p className="item">
-    //       <label > Password </label>
-    //       <input
-    //         type="password"
-    //         name="password"
-    //         id="password"
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //     </p>
-    //     <p className="item">
-    //       <input type="submit" value="Login" />
-    //     </p>
-    //   </form>
-    // </div>
   )
 }
 export default SignupLogin
