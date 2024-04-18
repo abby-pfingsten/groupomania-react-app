@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 function SignupLogin({ type }) {
   const navigate = useNavigate()
 
+  // handle the form submission
   function handleSubmit(e) {
     e.preventDefault()
 
@@ -12,11 +13,13 @@ function SignupLogin({ type }) {
       axios
         .post("http://localhost:3001/api/auth/login", { email, password })
         .then((response) => {
-          // console.log()
           const token = response[["data"]]
-          console.log(token)
           localStorage.setItem("userToken", JSON.stringify(token))
 
+          // TODO --find name in database to display it in home screen
+          // based on the email
+
+          // if all is successful, then navigate to the homepage
           navigate("/")
         })
         .catch((error) => {
@@ -33,6 +36,10 @@ function SignupLogin({ type }) {
           password,
         })
         .then((response) => {
+          const responseData = response[["data"]]
+          // grab the name to display it to the user on the homepage
+          localStorage.setItem("userName", JSON.stringify(responseData.name))
+          // if all goes well, navigate to the homepage
           navigate("/")
         })
         .catch((error) => {

@@ -6,6 +6,8 @@ import Profile from "./frontend/pages/Profile"
 import { Navigate } from "react-router-dom"
 
 function App() {
+  const token = JSON.parse(localStorage.getItem("userToken"))
+
   return (
     <BrowserRouter>
       <Routes>
@@ -14,7 +16,7 @@ function App() {
         <Route
           exact
           path="/"
-          element={true ? <Home /> : <Navigate to="/auth/login" />}
+          element={token ? <Home /> : <Navigate to="/auth/login" />}
         />
         <Route exact path="/profile" element={<Profile />} />
       </Routes>

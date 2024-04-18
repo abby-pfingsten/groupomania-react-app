@@ -1,4 +1,4 @@
-const {User} = require("../models")
+const { User } = require("../models")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
@@ -13,6 +13,7 @@ exports.signup = (req, res, next) => {
       .save()
       .then(() => {
         res.status(201).json({
+          name: req.body.name,
           message: "User added successfully!",
         })
       })
