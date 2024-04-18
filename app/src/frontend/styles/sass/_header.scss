@@ -1,0 +1,33 @@
+$navy-color: rgb(44, 63, 121);
+
+.nav-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  padding-left: 40px;
+  padding-right: 40px;
+  &__mobile {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  & img {
+    width: 50%;
+  }
+  &__search {
+    display: flex;
+    flex-direction: row;
+    & input {
+      width: 400px;
+    }
+  }
+  &__search-mobile {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__menu a {
+    color: $navy-color;
+    font-size: 30px;
+  }
+}

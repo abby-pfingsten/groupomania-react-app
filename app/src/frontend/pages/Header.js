@@ -1,57 +1,97 @@
-import { Outlet, Link } from 'react-router-dom'
-import '../styles/Header.scss'
-import logo from '../images/icon-left-font.png'
-import { useState } from 'react'
+import { Outlet, Link } from "react-router-dom"
+import "../styles/sass/_header.scss"
+import textLogo from "../images/icon-left-font-monochrome-black.svg"
+import iconLogo from "../images/icon.svg"
+import { useState } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { faX } from "@fortawesome/free-solid-svg-icons"
+// import { icon } from '@fortawesome/fontawesome-svg-core'
 
 function Header() {
-  const searchParams = new URL(document.URL)
-
+  /* Constants */
   const urlParams = new URLSearchParams(window.location.search)
+  const [searchText, setSearchText] = useState(urlParams.get("search") ?? "")
+  const [click, setClick] = useState(false)
+  const [mobileHeader, setMobileHeader] = useState(false)
 
-  const [searchText, setSearchText] = useState(urlParams.get('search') ?? '')
+  /* Font Awesome */
+  const faBarsElement = <FontAwesomeIcon icon={faBars} />
+  const faXElement = <FontAwesomeIcon icon={faX} />
 
-  // const urlParams = new URLSearchParams(window.location.search)
-
-  // urlParams.set('order', 'date')
-
-  // window.location.search = urlParams
-
+  /* Functions */
+  // this is to capture the actual text and update
+  // the url
   const onChangeSearchText = () => {
     if (searchText.length !== 0) {
-      urlParams.set('search', searchText)
+      urlParams.set("search", searchText)
 
       window.location.search = urlParams
     } else {
-      window.location.search = ''
+      window.location.search = ""
+    }
+  }
+  // set click to opposite
+  const handleClick = () => {
+    setClick(!click)
+  }
+
+  const showMobileHeader = () => {
+    if (window.innerWidth <= 960) {
+      setMobileHeader(true)
+    } else {
+      setMobileHeader(false)
     }
   }
 
-  console.log(searchParams)
+  window.addEventListener("resize", showMobileHeader)
 
   return (
     <>
-      <nav>
-        <ul className="navigation-layout">
-          <li>
-            <Link to="/">
-              <img src={logo} alt="Groupomania Logo"></img>
-            </Link>
-          </li>
-          <li>
-            {' '}
+      <nav className="nav">
+        <div
+          className={
+            mobileHeader ? "nav-layout nav-layout__mobile" : "nav-layout"
+          }
+        >
+          <Link to="/" className="nav-layout__logo">
+            <img
+              src={mobileHeader ? iconLogo : textLogo}
+              alt="Groupomania Logo"
+            ></img>
+          </Link>
+
+          <div
+            className={
+              mobileHeader ? "nav-layout__search-mobile" : "nav-layout__search"
+            }
+          >
+            {" "}
             <input
+              placeholder="Search Groupomania..."
               type="text"
               onChange={(e) => setSearchText(e.target.value)}
               value={searchText}
             />
             <button type="submit" onClick={onChangeSearchText}>
-              Click Me{' '}
+              Search{" "}
             </button>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
+          </div>
+          <div className="nav-layout__menu" onClick={handleClick}>
+            <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
+          </div>
+          {/* 
+          <ul
+            className={
+              mobileHeader ? "nav-layout nav-layout__mobile" : "nav-layout"
+            }
+          > */}
+
+          {/* <li className="nav-layout__profile" onClick={handleClick}>
+              <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
+            </li> */}
+          {/* </ul> */}
+        </div>
       </nav>
 
       <Outlet />

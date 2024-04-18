@@ -1,17 +1,17 @@
-'use strict'
+"use strict"
 
-const fs = require('fs')
-const path = require('path')
-const Sequelize = require('sequelize')
-const process = require('process')
+const fs = require("fs")
+const path = require("path")
+const Sequelize = require("sequelize")
+const process = require("process")
 const basename = path.basename(__filename)
-const env = process.env.NODE_ENV || 'development'
-const config = require(__dirname + '/../config/config.json')[env]
+const env = process.env.NODE_ENV || "development"
+const config = require(__dirname + "/../config/config.json")[env]
 const db = {}
 const database = process.env.DB_NAME
 const username = process.env.DB_USERNAME
 const password = process.env.DB_PASSWORD
-
+console.log(process.env)
 let sequelize
 
 if (config.use_env_variable) {
@@ -20,14 +20,14 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(database, username, password, config)
 }
 
-if (env === 'development') {
+if (env === "development") {
   sequelize.sync({ alter: true })
 }
 
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
-      file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js'
+      file.indexOf(".") !== 0 && file !== basename && file.slice(-3) === ".js"
     )
   })
   .forEach((file) => {
