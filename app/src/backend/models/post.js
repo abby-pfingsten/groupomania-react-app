@@ -1,5 +1,6 @@
 "use strict"
 const { Model } = require("sequelize")
+const { User } = require("../models")
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     /**
@@ -13,8 +14,6 @@ module.exports = (sequelize, DataTypes) => {
   }
   Post.init(
     {
-      name: DataTypes.STRING,
-      email: { type: DataTypes.STRING },
       title: DataTypes.STRING,
       body: DataTypes.STRING,
       media: DataTypes.STRING,
@@ -24,5 +23,14 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Post",
     }
   )
+
+  Post.associate = (models) => {
+    Post.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false,
+      },
+    })
+  }
+
   return Post
 }
