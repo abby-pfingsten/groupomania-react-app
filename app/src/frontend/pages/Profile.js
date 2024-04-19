@@ -1,5 +1,11 @@
+import Header from "./Header"
 const Profile = () => {
-  return <h1>Edit My Profile</h1>
+  return (
+    <div>
+      <Header />
+      <h1>Edit My Profile</h1>
+    </div>
+  )
 }
 
 export default Profile
