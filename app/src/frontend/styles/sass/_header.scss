@@ -1,4 +1,4 @@
-$navy-color: rgb(44, 63, 121);
+$light-red-color: rgb(184, 94, 78);
 
 .nav-layout {
   display: flex;
@@ -7,6 +7,8 @@ $navy-color: rgb(44, 63, 121);
   list-style: none;
   padding-left: 40px;
   padding-right: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   &__mobile {
     padding-left: 10px;
     padding-right: 10px;
@@ -27,7 +29,7 @@ $navy-color: rgb(44, 63, 121);
   }
 
   &__menu a {
-    color: $navy-color;
+    color: $light-red-color;
     font-size: 30px;
   }
 }

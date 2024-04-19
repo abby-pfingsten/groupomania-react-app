@@ -48,7 +48,7 @@ function Header() {
 
   return (
     <>
-      <nav className="nav">
+      <nav >
         <div
           className={
             mobileHeader ? "nav-layout nav-layout__mobile" : "nav-layout"
