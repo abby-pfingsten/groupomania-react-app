@@ -7,6 +7,8 @@ const express = require("express")
 const path = require("path")
 
 const userRouter = require("./routes/user")
+const postRouter = require("./routes/posts")
+
 const app = express()
 require("./models")
 
