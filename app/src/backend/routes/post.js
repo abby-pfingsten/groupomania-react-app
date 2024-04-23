@@ -6,7 +6,7 @@ const router = express.Router()
 
 const postCtrl = require("../controllers/post")
 
-// router.post("/signup", userCtrl.signup)
+router.post("/post", postCtrl.createPost)
 // router.post("/login", userCtrl.login)
 
 module.exports = router
