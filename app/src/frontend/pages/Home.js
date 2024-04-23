@@ -1,5 +1,6 @@
 import "../styles/sass/_home.scss"
 import Header from "./Header"
+import userPosts from "../models/posts"
 
 function Home() {
   //fetch some data and put it into a state variable
@@ -8,9 +9,15 @@ function Home() {
       <Header />
       <div className="home">
         <h1>Welcome, Name of User</h1>
-        <button className="home__button">
-          Create a post
-        </button>
+        <button className="home__button">Create a post</button>
+      </div>
+      <div className="posts">
+        {/* {console.log(userPosts)} */}
+        <ul>
+          {userPosts.map((name, index) => (
+          <li key={`${name}-${index}`}>{name}</li>
+          ))}
+        </ul>
       </div>
     </>
   )

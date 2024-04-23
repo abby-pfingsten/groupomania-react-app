@@ -11,7 +11,7 @@ function SignupLogin({ type }) {
 
     if (type === "Login") {
       axios
-        .post("http://localhost:3001/api/auth/login", { email, password })
+        .post("http://localhost:3000/api/auth/login", { email, password })
         .then((response) => {
           const token = response[["data"]]
           localStorage.setItem("userToken", JSON.stringify(token))
@@ -30,7 +30,7 @@ function SignupLogin({ type }) {
         })
     } else {
       axios
-        .post("http://localhost:3001/api/auth/signup", {
+        .post("http://localhost:3000/api/auth/signup", {
           name,
           email,
           password,
