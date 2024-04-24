@@ -67,7 +67,7 @@ function Header() {
             }
           >
             {" "}
-            <input
+            {/* <input
               placeholder="Search Groupomania..."
               type="text"
               onChange={(e) => setSearchText(e.target.value)}
@@ -75,7 +75,7 @@ function Header() {
             />
             <button type="submit" onClick={onChangeSearchText}>
               Search{" "}
-            </button>
+            </button> */}
           </div>
           <div className="nav-layout__menu" onClick={handleClick}>
             <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
