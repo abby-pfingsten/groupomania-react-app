@@ -10,9 +10,7 @@ $light-red-color: rgb(184, 94, 78);
   align-content: center;
   margin-top: 10px;
   gap: 20px;
-  @include desktop-only {
-    background-color: green;
-  }
+  
 }
 // post link styling
 .posts-link {

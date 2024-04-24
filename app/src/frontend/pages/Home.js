@@ -1,7 +1,7 @@
-import "../styles/sass/_home.scss"
+import "../styles/sass/Home.scss"
 import Header from "./Header"
 import userPosts from "../models/posts"
-import "../styles/sass/_posts.scss"
+import "../styles/sass/Posts.scss"
 import { Link } from "react-router-dom"
 import React, { useState, useEffect } from "react"
 
