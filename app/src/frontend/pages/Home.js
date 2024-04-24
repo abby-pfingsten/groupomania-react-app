@@ -12,10 +12,10 @@ function Home() {
         <button className="home__button">Create a post</button>
       </div>
       <div className="posts">
-        {/* {console.log(userPosts)} */}
+        {console.log(userPosts)}
         <ul>
-          {userPosts.map((name, index) => (
-          <li key={`${name}-${index}`}>{name}</li>
+          {userPosts.map((post, index) => (
+          <li key={`${post.title}-${index}`}>{post.title}</li>
           ))}
         </ul>
       </div>

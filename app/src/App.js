@@ -16,7 +16,7 @@ function App() {
         <Route
           exact
           path="/"
-          element={true ? <Home /> : <Navigate to="/auth/login" />}
+          element={token ? <Home /> : <Navigate to="/auth/login" />}
         />
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
