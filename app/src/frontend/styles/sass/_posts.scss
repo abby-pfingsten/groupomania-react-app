@@ -1,3 +1,8 @@
+@import './utils/mixins';
+
+$light-red-color: rgb(184, 94, 78);
+
+// styling for the container holding all posts
 .posts-div {
   display: flex;
   flex-direction: column;
@@ -5,11 +10,29 @@
   align-content: center;
   margin-top: 10px;
   gap: 20px;
+  @include desktop-only {
+    background-color: green;
+  }
 }
+// post link styling
+.posts-link {
+  text-decoration: none;
+  color: black;
+}
+// styling for each individual post
 .posts {
   padding: 10px;
   border-radius: 3ch;
   border-style: solid;
+  text-decoration: none;
+  transition: filter 2s ease;
+  transition: background-color .3s ease;
+  &:hover {
+    background-color: $light-red-color;
+    border-color: $light-red-color;
+    color: white;
+    filter: drop-shadow(10px 10px 20px rgba(36, 36, 36, 0.5));
+  }
   &__title {
     font-weight: bold;
     padding-bottom: 10px;
