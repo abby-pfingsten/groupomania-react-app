@@ -4,16 +4,15 @@ import textLogo from "../images/icon-left-font-monochrome-black.svg"
 import iconLogo from "../images/icon.svg"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
-import { faX } from "@fortawesome/free-solid-svg-icons"
-// import { icon } from '@fortawesome/fontawesome-svg-core'
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
-function Header() {
+
+function Header({mobileHeader}) {
   /* Constants */
   // const urlParams = new URLSearchParams(window.location.search)
   // const [searchText, setSearchText] = useState(urlParams.get("search") ?? "")
   const [click, setClick] = useState(false)
-  const [mobileHeader, setMobileHeader] = useState(false)
+  // const [mobileHeader, setMobileHeader] = useState(false)
 
   /* Font Awesome */
   const faBarsElement = <FontAwesomeIcon icon={faBars} />
@@ -35,16 +34,6 @@ function Header() {
   const handleClick = () => {
     setClick(!click)
   }
-
-  const showMobileHeader = () => {
-    if (window.innerWidth <= 960) {
-      setMobileHeader(true)
-    } else {
-      setMobileHeader(false)
-    }
-  }
-
-  window.addEventListener("resize", showMobileHeader)
 
   return (
     <>

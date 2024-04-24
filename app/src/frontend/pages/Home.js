@@ -4,9 +4,11 @@ import userPosts from "../models/posts"
 import "../styles/sass/Posts.scss"
 import { Link } from "react-router-dom"
 import React, { useState, useEffect } from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 
-function Home() {
+function Home({mobileHeader}) {
 
 
   //  const [matches, setMatches] = useState(
@@ -21,7 +23,7 @@ function Home() {
   //fetch some data and put it into a state variable
   return (
     <>
-      <Header />
+      <Header mobileHeader={mobileHeader}/>
       <div className="home">
         <h1>Welcome, Name of User</h1>
         <button className="home__button">Create a post</button>

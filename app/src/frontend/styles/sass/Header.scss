@@ -1,7 +1,5 @@
-@import './utils/mixins';
-
-$light-red-color: rgb(184, 94, 78);
-
+@import "./utils/mixins";
+@import "./utils/variables.scss";
 .nav-layout {
   display: flex;
   flex-direction: row;
