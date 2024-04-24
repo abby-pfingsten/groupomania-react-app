@@ -9,15 +9,15 @@ import React, { useState, useEffect } from "react"
 function Home() {
 
 
-   const [matches, setMatches] = useState(
-     window.matchMedia("(min-width: 768px)").matches
-   )
+  //  const [matches, setMatches] = useState(
+  //    window.matchMedia("(min-width: 768px)").matches
+  //  )
 
-   useEffect(() => {
-     window
-       .matchMedia("(min-width: 768px)")
-       .addEventListener("change", (e) => setMatches(e.matches))
-   }, [])
+  //  useEffect(() => {
+  //    window
+  //      .matchMedia("(min-width: 768px)")
+  //      .addEventListener("change", (e) => setMatches(e.matches))
+  //  }, [])
   //fetch some data and put it into a state variable
   return (
     <>

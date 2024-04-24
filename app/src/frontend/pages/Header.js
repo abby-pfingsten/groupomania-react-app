@@ -10,8 +10,8 @@ import { faX } from "@fortawesome/free-solid-svg-icons"
 
 function Header() {
   /* Constants */
-  const urlParams = new URLSearchParams(window.location.search)
-  const [searchText, setSearchText] = useState(urlParams.get("search") ?? "")
+  // const urlParams = new URLSearchParams(window.location.search)
+  // const [searchText, setSearchText] = useState(urlParams.get("search") ?? "")
   const [click, setClick] = useState(false)
   const [mobileHeader, setMobileHeader] = useState(false)
 
@@ -22,16 +22,16 @@ function Header() {
   /* Functions */
   // this is to capture the actual text and update
   // the url
-  const onChangeSearchText = () => {
-    if (searchText.length !== 0) {
-      urlParams.set("search", searchText)
+  // const onChangeSearchText = () => {
+  //   if (searchText.length !== 0) {
+  //     urlParams.set("search", searchText)
 
-      window.location.search = urlParams
-    } else {
-      window.location.search = ""
-    }
-  }
-  // set click to opposite
+  //     window.location.search = urlParams
+  //   } else {
+  //     window.location.search = ""
+  //   }
+  // }
+  // // set click to opposite
   const handleClick = () => {
     setClick(!click)
   }
@@ -48,12 +48,8 @@ function Header() {
 
   return (
     <>
-      <nav >
-        <div
-          className={
-            mobileHeader ? "nav-layout nav-layout__mobile" : "nav-layout"
-          }
-        >
+      <nav>
+        <div className={"nav-layout"}>
           <Link to="/" className="nav-layout__logo">
             <img
               src={mobileHeader ? iconLogo : textLogo}
@@ -61,13 +57,13 @@ function Header() {
             ></img>
           </Link>
 
-          <div
+          {/* <div
             className={
               mobileHeader ? "nav-layout__search-mobile" : "nav-layout__search"
             }
           >
             {" "}
-            {/* <input
+            <input
               placeholder="Search Groupomania..."
               type="text"
               onChange={(e) => setSearchText(e.target.value)}
@@ -75,8 +71,8 @@ function Header() {
             />
             <button type="submit" onClick={onChangeSearchText}>
               Search{" "}
-            </button> */}
-          </div>
+            </button>
+          </div> */}
           <div className="nav-layout__menu" onClick={handleClick}>
             <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
           </div>

@@ -1,3 +1,5 @@
+@import './utils/mixins';
+
 $light-red-color: rgb(184, 94, 78);
 
 .nav-layout {
@@ -5,28 +7,29 @@ $light-red-color: rgb(184, 94, 78);
   flex-direction: row;
   justify-content: space-between;
   list-style: none;
-  padding-left: 40px;
-  padding-right: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
-  &__mobile {
-    padding-left: 10px;
-    padding-right: 10px;
+  @include desktop-only {
+    padding-left: 40px;
+    padding-right: 40px;
   }
+
   & img {
     width: 50%;
   }
-  &__search {
-    display: flex;
-    flex-direction: row;
-    & input {
-      width: 400px;
-    }
-  }
-  &__search-mobile {
-    display: flex;
-    flex-direction: row;
-  }
+  // &__search {
+  //   display: flex;
+  //   flex-direction: row;
+  //   & input {
+  //     width: 400px;
+  //   }
+  // }
+  // &__search-mobile {
+  //   display: flex;
+  //   flex-direction: row;
+  // }
 
   &__menu a {
     color: $light-red-color;
