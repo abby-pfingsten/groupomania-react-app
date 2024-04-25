@@ -5,19 +5,23 @@ import "../styles/sass/Posts.scss"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
-import { Dialog as Modal } from "@headlessui/react"
+// import { Dialog as Modal } from "@headlessui/react"
 import { useState } from "react"
+import Modal from "../components/Modal"
 
 function Home({ mobileHeader }) {
   const faCirclePlusElement = <FontAwesomeIcon icon={faCirclePlus} />
-  const [isOpen, setIsOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
 
   return (
     <>
       <Header mobileHeader={mobileHeader} />
       <div className="home">
         <h1>Welcome, Name of User</h1>
-        <button className="home__button" onClick={() => setIsOpen(true)}>
+        <button className="home__button" onClick={() => setIsModalOpen(true)}>
           {mobileHeader ? faCirclePlusElement : "Create A Post"}
         </button>
       </div>
@@ -32,7 +36,14 @@ function Home({ mobileHeader }) {
           </Link>
         ))}
       </div>
-      <Modal open={isOpen} onClose={() => setIsOpen(false)} className="modal">
+      <section>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      </section>
+      ;
+      {/* <Modal open={isOpen} onClose={() => setIsOpen(false)} className="modal">
         <Modal.Panel>
           <Modal.Title>Deactivate account</Modal.Title>
           <Modal.Description>
@@ -47,7 +58,7 @@ function Home({ mobileHeader }) {
           <button onClick={() => setIsOpen(false)}>Deactivate</button>
           <button onClick={() => setIsOpen(false)}>Cancel</button>
         </Modal.Panel>
-      </Modal>
+      </Modal> */}
     </>
   )
 }
