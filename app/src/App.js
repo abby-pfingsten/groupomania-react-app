@@ -31,7 +31,7 @@ function App() {
         <Route
           exact
           path="/"
-          element={true ? <Home mobileHeader={mobileHeader} /> : <Navigate to="/auth/login" />}
+          element={token ? <Home mobileHeader={mobileHeader} /> : <Navigate to="/auth/login" />}
         />
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
