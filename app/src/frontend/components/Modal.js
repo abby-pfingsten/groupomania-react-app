@@ -2,6 +2,8 @@ import React from "react"
 import "../styles/sass/Modal.scss"
 import { IoMdClose } from "react-icons/io"
 
+// Source:
+// https://blog.openreplay.com/creating-easy-custom-modals-with-react/
 
 const Modal = ({ isModalOpen, onClose }) => {
   if (isModalOpen !== true) {
@@ -14,14 +16,20 @@ const Modal = ({ isModalOpen, onClose }) => {
           <IoMdClose onClick={onClose} />
         </div>
         <main className="modal-mainContents">
-          <h5 className="modal-title">{'modalContent.title'}</h5>
+          <h5 className="modal-title">What would you like to share...</h5>
           <hr />
-          {/* <div className="modal-image text-center mt-lg-2">
-            <img src={'modalContent.image'} alt="image" />
-          </div> */}
-          <p className="mt-lg-3 modalText">{'modalContent.content'}</p>
+          <form className="modalText" method="post">
+            <input
+              type="text"
+              name="post-title"
+              label="sad"
+              id="post-title"
+            ></input>
+            {/* <label>Content</label> */}
+            <input type="text" name="post-title" id="post-title"></input>
+          </form>
           <div className="modal-button text-end">
-            <button>{'modalContent.buttonText'}</button>
+            <button>{"Post"}</button>
           </div>
         </main>
       </article>
