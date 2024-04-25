@@ -1,10 +1,17 @@
 @import "./utils/variables.scss";
+@import "./utils/mixins.scss";
 
 .home {
   display: flex;
   flex-direction: row;
   background-color: $light-red-color;
   padding-left: 5px;
+  gap: 10px;
+  @include desktop-only {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   &__button {
     width: 10%;
     height: 10%;

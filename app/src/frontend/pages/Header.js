@@ -6,8 +6,7 @@ import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
-
-function Header({mobileHeader}) {
+function Header({ mobileHeader }) {
   /* Constants */
   // const urlParams = new URLSearchParams(window.location.search)
   // const [searchText, setSearchText] = useState(urlParams.get("search") ?? "")
@@ -39,8 +38,9 @@ function Header({mobileHeader}) {
     <>
       <nav>
         <div className={"nav-layout"}>
-          <Link to="/" className="nav-layout__logo">
+          <Link to="/">
             <img
+              className="nav-layout__logo"
               src={mobileHeader ? iconLogo : textLogo}
               alt="Groupomania Logo"
             ></img>
@@ -65,17 +65,6 @@ function Header({mobileHeader}) {
           <div className="nav-layout__menu" onClick={handleClick}>
             <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
           </div>
-          {/* 
-          <ul
-            className={
-              mobileHeader ? "nav-layout nav-layout__mobile" : "nav-layout"
-            }
-          > */}
-
-          {/* <li className="nav-layout__profile" onClick={handleClick}>
-              <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
-            </li> */}
-          {/* </ul> */}
         </div>
       </nav>
 
