@@ -1,6 +1,5 @@
-@import './utils/mixins';
+@import "./utils/mixins";
 @import "./utils/variables.scss";
-
 
 // styling for the container holding all posts
 .posts-div {
@@ -10,7 +9,9 @@
   align-content: center;
   margin-top: 10px;
   gap: 20px;
-  
+  @include desktop-only {
+    align-items: stretch;
+  }
 }
 // post link styling
 .posts-link {
@@ -19,12 +20,14 @@
 }
 // styling for each individual post
 .posts {
+  width: 90%;
+  margin-left: 5px;
   padding: 10px;
   border-radius: 3ch;
   border-style: solid;
   text-decoration: none;
   transition: filter 2s ease;
-  transition: background-color .3s ease;
+  transition: background-color 0.3s ease;
   &:hover {
     background-color: $light-red-color;
     border-color: $light-red-color;

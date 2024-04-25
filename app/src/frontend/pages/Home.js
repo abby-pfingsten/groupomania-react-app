@@ -9,24 +9,14 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 
 
 function Home({mobileHeader}) {
+  const faCirclePlusElement = <FontAwesomeIcon icon={faCirclePlus} />
 
-
-  //  const [matches, setMatches] = useState(
-  //    window.matchMedia("(min-width: 768px)").matches
-  //  )
-
-  //  useEffect(() => {
-  //    window
-  //      .matchMedia("(min-width: 768px)")
-  //      .addEventListener("change", (e) => setMatches(e.matches))
-  //  }, [])
-  //fetch some data and put it into a state variable
   return (
     <>
       <Header mobileHeader={mobileHeader}/>
       <div className="home">
         <h1>Welcome, Name of User</h1>
-        <button className="home__button">Create a post</button>
+        <button className="home__button">{mobileHeader ? faCirclePlusElement : 'Create A Post'}</button>
       </div>
       <div className="posts-div">
         {userPosts.map((post, index) => (
