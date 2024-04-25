@@ -36,9 +36,9 @@ function SignupLogin({ type }) {
           password,
         })
         .then((response) => {
-          const responseData = response[["data"]]
+          // const responseData = response[["data"]]
           // grab the name to display it to the user on the homepage
-          localStorage.setItem("userName", JSON.stringify(responseData.name))
+          // localStorage.setItem("userName", JSON.stringify(responseData.name))
           // if all goes well, navigate to the homepage
           navigate("/")
         })
