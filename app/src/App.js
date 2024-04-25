@@ -10,6 +10,7 @@ import { useState } from "react"
 function App() {
   const token = JSON.parse(localStorage.getItem("userToken"))
 
+  // determine whether or not we are in a mobile view
   const [mobileHeader, setMobileHeader] = useState(false)
   
     const showMobileHeader = () => {
@@ -19,7 +20,6 @@ function App() {
         setMobileHeader(false)
       }
     }
-
     window.addEventListener("resize", showMobileHeader)
 
 
