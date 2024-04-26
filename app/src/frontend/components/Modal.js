@@ -2,7 +2,7 @@ import React from "react"
 import "../styles/sass/Modal.scss"
 import { IoMdClose } from "react-icons/io"
 import { TextField } from "@mui/material"
-import { FormControl } from "@mui/base"
+import { FormControl, Button } from "@mui/base"
 
 // Source:
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
@@ -34,6 +34,24 @@ const Modal = ({ isModalOpen, onClose }) => {
               multiline
               rows={10}
             />
+
+            <input
+              accept="image/*"
+              //   className={classes.input}
+              //   style={{ display: "none" }}
+              id="raised-button-file"
+              multiple
+              type="file"
+            />
+            {/* <label htmlFor="raised-button-file">
+              <Button
+                variant="raised"
+                component="span"
+                // className={classes.button}
+              >
+                Upload
+              </Button>
+            </label> */}
             <div className="modal-button text-end">
               <button>{"Post"}</button>
             </div>
