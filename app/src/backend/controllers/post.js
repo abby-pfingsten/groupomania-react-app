@@ -1,10 +1,10 @@
-const  Post  = require("../models/post")
+const  {Post}  = require("../models")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 exports.createPost = (req, res, next) => {
  
-    req.body.post = JSON.parse(req.body.post)
+    // req.body.post = JSON.parse(req.body)
 
 //   const url = req.protocol + "://" + req.get("host")
 
