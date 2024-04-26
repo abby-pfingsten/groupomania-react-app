@@ -31,7 +31,7 @@
   width: 500px;
   background-color: #fff;
   border-radius: 15px;
-  padding: 10px;
+  padding: 15px;
 }
 .exit-icon {
   cursor: pointer;
@@ -58,4 +58,11 @@
   background-color: $light-red-color;
   color: white;
   border-radius: 7px;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 15px;
 }

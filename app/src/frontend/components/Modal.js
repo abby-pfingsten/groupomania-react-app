@@ -1,6 +1,8 @@
 import React from "react"
 import "../styles/sass/Modal.scss"
 import { IoMdClose } from "react-icons/io"
+import { TextField } from "@mui/material"
+import { FormControl } from "@mui/base"
 
 // Source:
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
@@ -18,19 +20,36 @@ const Modal = ({ isModalOpen, onClose }) => {
         <main className="modal-mainContents">
           <h5 className="modal-title">What would you like to share...</h5>
           <hr />
-          <form className="modalText" method="post">
+          <FormControl className="modal-form">
+            <TextField
+              method="post"
+              required
+              id="standard-required"
+              label="Title"
+              variant="standard"
+            />
+            <TextField
+              id="outlined-multiline-static"
+              label="Post"
+              multiline
+              rows={10}
+            />
+            <div className="modal-button text-end">
+              <button>{"Post"}</button>
+            </div>
+          </FormControl>
+          {/* <form className="modalText" method="post">
             <input
               type="text"
               name="post-title"
               label="sad"
               id="post-title"
             ></input>
-            {/* <label>Content</label> */}
             <input type="text" name="post-title" id="post-title"></input>
-          </form>
-          <div className="modal-button text-end">
-            <button>{"Post"}</button>
-          </div>
+          </form> */}
+          {/* <div className="modal-button text-end"> */}
+          {/* <button>{"Post"}</button> */}
+          {/* </div> */}
         </main>
       </article>
     </section>
