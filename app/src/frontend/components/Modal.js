@@ -38,18 +38,6 @@ const Modal = ({ isModalOpen, onClose }) => {
               <button>{"Post"}</button>
             </div>
           </FormControl>
-          {/* <form className="modalText" method="post">
-            <input
-              type="text"
-              name="post-title"
-              label="sad"
-              id="post-title"
-            ></input>
-            <input type="text" name="post-title" id="post-title"></input>
-          </form> */}
-          {/* <div className="modal-button text-end"> */}
-          {/* <button>{"Post"}</button> */}
-          {/* </div> */}
         </main>
       </article>
     </section>
