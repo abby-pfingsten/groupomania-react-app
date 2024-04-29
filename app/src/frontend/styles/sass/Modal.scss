@@ -42,7 +42,7 @@
   font-size: 20px;
 }
 .modal-title {
-  color: $light-red-color;
+  color: $dark-red-color;
   font-weight: 700;
   font-size: 25px;
   line-height: 28px;
@@ -56,10 +56,10 @@
   text-align: justify;
 }
 .modal-button button {
-  border: 1px solid $light-red-color;
+  border: 1px solid $dark-red-color;
   padding: 6px;
   width: 8rem;
-  background-color: $light-red-color;
+  background-color: $dark-red-color;
   color: white;
   border-radius: 7px;
 }

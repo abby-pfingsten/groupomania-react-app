@@ -16,11 +16,15 @@ function Home({ mobileHeader }) {
     setIsModalOpen(false)
   }
 
+  // grab the name of the user
+  let userObject = localStorage.getItem("userToken")
+  let userName = JSON.parse(userObject)[["name"]]
+
   return (
     <>
       <Header mobileHeader={mobileHeader} />
       <div className="home">
-        <h1>Welcome, Name of User</h1>
+        <h1>Welcome, {userName} </h1>
         <button className="home__button" onClick={() => setIsModalOpen(true)}>
           {mobileHeader ? faCirclePlusElement : "Create A Post"}
         </button>
@@ -37,10 +41,7 @@ function Home({ mobileHeader }) {
         ))}
       </div>
       <section>
-        <Modal
-          isModalOpen={isModalOpen}
-          onClose={closeModal}
-        />
+        <Modal isModalOpen={isModalOpen} onClose={closeModal} />
       </section>
       ;
       {/* <Modal open={isOpen} onClose={() => setIsOpen(false)} className="modal">

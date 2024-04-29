@@ -8,27 +8,26 @@ exports.createPost = (req, res, next) => {
 
   //   const url = req.protocol + "://" + req.get("host")
 
-  //   const post = new Post({
-  // title: req.body.title,
-  // body: req.body.body,
-  // media: req.body.media
-
-  // })
-  const post = Post.create(
-    {
-      title: req.body.title,
-      body: req.body.body,
-      media: req.body.media,
-    },
-    {
-      include: [
-        {
-          association: Post.User,
-          // include: [User.Addresses],
-        },
-      ],
-    }
-  )
+  const post = new Post({
+    title: req.body.title,
+    body: req.body.body,
+    media: req.body.media,
+  })
+  // const post = Post.create(
+  //   {
+  //     title: req.body.title,
+  //     body: req.body.body,
+  //     media: req.body.media,
+  //   },
+  //   {
+  //     include: [
+  //       {
+  //         association: Post.User,
+  //         // include: [User.Addresses],
+  //       },
+  //     ],
+  //   }
+  // )
   post
     .save()
     .then(() => {
