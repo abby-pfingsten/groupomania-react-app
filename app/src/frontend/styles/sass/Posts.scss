@@ -7,10 +7,10 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  margin-top: 10px;
+  margin: 10px;
   gap: 20px;
   @include desktop-only {
-    align-items: stretch;
+    align-items: normal;
   }
 }
 // post link styling

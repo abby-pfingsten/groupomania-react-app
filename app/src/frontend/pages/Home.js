@@ -5,7 +5,6 @@ import "../styles/sass/Posts.scss"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
-// import { Dialog as Modal } from "@headlessui/react"
 import { useState } from "react"
 import Modal from "../components/Modal"
 
@@ -33,8 +32,8 @@ function Home({ mobileHeader }) {
         {userPosts.map((post, index) => (
           <Link key={`${post.title}-${index}`} className="posts-link">
             <section className="posts">
-              <div className="posts__title">{post.title}</div>
-              <div className="posts__body">{post.body}</div>
+              <h2 className="posts__title">{post.title}</h2>
+              <p className="posts__body">{post.body}</p>
               <div className="posts__media">{post.media}</div>
             </section>
           </Link>

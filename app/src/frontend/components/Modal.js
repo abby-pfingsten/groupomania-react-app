@@ -2,7 +2,7 @@ import React from "react"
 import "../styles/sass/Modal.scss"
 import { IoMdClose } from "react-icons/io"
 import { TextField } from "@mui/material"
-import { FormControl, Button } from "@mui/base"
+import { FormControl } from "@mui/base"
 
 // Source:
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/

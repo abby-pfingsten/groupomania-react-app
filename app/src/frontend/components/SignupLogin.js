@@ -16,9 +16,6 @@ function SignupLogin({ type }) {
           const token = response[["data"]]
           localStorage.setItem("userToken", JSON.stringify(token))
 
-          // TODO --find name in database to display it in home screen
-          // based on the email
-
           // if all is successful, then navigate to the homepage
           navigate("/")
         })
