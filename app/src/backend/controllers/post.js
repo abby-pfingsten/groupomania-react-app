@@ -1,19 +1,34 @@
-const  {Post}  = require("../models")
+const { Post } = require("../models")
+const { User } = require("../models")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 exports.createPost = (req, res, next) => {
- 
-    // req.body.post = JSON.parse(req.body)
+  // req.body.post = JSON.parse(req.body)
 
-//   const url = req.protocol + "://" + req.get("host")
+  //   const url = req.protocol + "://" + req.get("host")
 
-    const post = new Post({
-        title: req.body.title,
-        body: req.body.body,
-        media: req.body.media
+  //   const post = new Post({
+  // title: req.body.title,
+  // body: req.body.body,
+  // media: req.body.media
 
-  })
+  // })
+  const post = Post.create(
+    {
+      title: req.body.title,
+      body: req.body.body,
+      media: req.body.media,
+    },
+    {
+      include: [
+        {
+          association: Post.User,
+          // include: [User.Addresses],
+        },
+      ],
+    }
+  )
   post
     .save()
     .then(() => {
