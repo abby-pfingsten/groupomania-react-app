@@ -1,11 +1,16 @@
+
+@import "./utils/mixins.scss";
+
 .header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-top: 10px;
+  margin: 10px;
   &__logo {
-    width: 20%;
-    // change for mobile
+    width: 40%;
+    @include desktop-only {
+      width: 20%;
+    }
   }
   &__links {
     display: flex;
