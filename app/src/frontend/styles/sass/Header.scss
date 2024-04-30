@@ -8,8 +8,8 @@
   list-style: none;
   padding-left: 10px;
   padding-right: 10px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   &__logo {
     width: 20%;
     @include desktop-only {
@@ -17,21 +17,9 @@
     }
   }
   @include desktop-only {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-  // &__search {
-  //   display: flex;
-  //   flex-direction: row;
-  //   & input {
-  //     width: 400px;
-  //   }
-  // }
-  // &__search-mobile {
-  //   display: flex;
-  //   flex-direction: row;
-  // }
-
   &__menu a {
     color: $dark-red-color;
     font-size: 30px;
