@@ -17,7 +17,6 @@ const PrivateRoutes = () => {
 }
 
 function App() {
-
   // determine whether or not we are in a mobile view
   const [mobileHeader, setMobileHeader] = useState(false)
 
@@ -29,6 +28,7 @@ function App() {
     }
   }
   window.addEventListener("resize", showMobileHeader)
+  window.addEventListener("load", showMobileHeader)
 
   return (
     <BrowserRouter>
