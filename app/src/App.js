@@ -17,14 +17,6 @@ const PrivateRoutes = () => {
 }
 
 function App() {
-  // const token = JSON.parse(localStorage.getItem("userToken"))
-
-  // const [token, setToken] = useState(() => {
-  //   // getting stored value
-  //   const userToken = localStorage.getItem("userToken")
-  //   const initialValue = JSON.parse(userToken)
-  //   return initialValue || ""
-  // })
 
   // determine whether or not we are in a mobile view
   const [mobileHeader, setMobileHeader] = useState(false)

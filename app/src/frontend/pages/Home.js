@@ -6,6 +6,7 @@ import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 import { useState } from "react"
+import { Button } from "@mui/base"
 import Modal from "../components/Modal"
 
 function Home({ mobileHeader }) {
@@ -24,9 +25,16 @@ function Home({ mobileHeader }) {
       <Header mobileHeader={mobileHeader} />
       <div className="home">
         <h1>Welcome, {userName} </h1>
-        <button className="home__button" onClick={() => setIsModalOpen(true)}>
+        {/* <button className="home__button" onClick={() => setIsModalOpen(true)}>
           {mobileHeader ? faCirclePlusElement : "Create A Post"}
-        </button>
+        </button> */}
+        <Button
+          variant="outlined"
+          className="home__button"
+          onClick={() => setIsModalOpen(true)}
+        >
+          {mobileHeader ? faCirclePlusElement : "Create A Post"}
+        </Button>
       </div>
       <div className="posts-div">
         {userPosts.map((post, index) => (
