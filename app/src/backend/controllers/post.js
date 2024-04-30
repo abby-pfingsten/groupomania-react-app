@@ -14,21 +14,12 @@ exports.createPost = (req, res, next) => {
   // media: req.body.media
 
   // })
-  const post = Post.create(
-    {
-      title: req.body.title,
-      body: req.body.body,
-      media: req.body.media,
-    },
-    {
-      include: [
-        {
-          association: Post.User,
-          // include: [User.Addresses],
-        },
-      ],
-    }
-  )
+  const post = Post.create({
+    title: req.body.title,
+    body: req.body.body,
+    media: req.body.media,
+    UserId: req.body.UserId,
+  })
   post
     .save()
     .then(() => {
