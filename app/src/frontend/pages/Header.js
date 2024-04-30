@@ -7,28 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
 function Header({ mobileHeader }) {
-  /* Constants */
-  // const urlParams = new URLSearchParams(window.location.search)
-  // const [searchText, setSearchText] = useState(urlParams.get("search") ?? "")
+
   const [click, setClick] = useState(false)
-  // const [mobileHeader, setMobileHeader] = useState(false)
 
   /* Font Awesome */
   const faBarsElement = <FontAwesomeIcon icon={faBars} />
   const faXElement = <FontAwesomeIcon icon={faX} />
 
-  /* Functions */
-  // this is to capture the actual text and update
-  // the url
-  // const onChangeSearchText = () => {
-  //   if (searchText.length !== 0) {
-  //     urlParams.set("search", searchText)
-
-  //     window.location.search = urlParams
-  //   } else {
-  //     window.location.search = ""
-  //   }
-  // }
   // // set click to opposite
   const handleClick = () => {
     setClick(!click)
@@ -45,29 +30,11 @@ function Header({ mobileHeader }) {
               alt="Groupomania Logo"
             ></img>
           </Link>
-
-          {/* <div
-            className={
-              mobileHeader ? "nav-layout__search-mobile" : "nav-layout__search"
-            }
-          >
-            {" "}
-            <input
-              placeholder="Search Groupomania..."
-              type="text"
-              onChange={(e) => setSearchText(e.target.value)}
-              value={searchText}
-            />
-            <button type="submit" onClick={onChangeSearchText}>
-              Search{" "}
-            </button>
-          </div> */}
           <div className="nav-layout__menu" onClick={handleClick}>
             <Link to="/profile">{click ? faXElement : faBarsElement} </Link>
           </div>
         </div>
       </nav>
-
       <Outlet />
     </>
   )
