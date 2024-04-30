@@ -1,5 +1,5 @@
 import React from "react"
-import "../styles/sass/Modal.scss"
+import "../styles/Modal.scss"
 import { IoMdClose } from "react-icons/io"
 import { TextField } from "@mui/material"
 import { FormControl } from "@mui/base"

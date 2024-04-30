@@ -1,10 +1,12 @@
 import SignupLogin from "../components/SignupLogin"
 import AccountHeader from "./AccountHeader"
+import "../styles/AccountHeader.scss"
 
-function Login() {
+
+function Login({isMobile}) {
   return (
     <>
-      <AccountHeader />
+      <AccountHeader  />
       <SignupLogin type="Login" />
     </>
   )

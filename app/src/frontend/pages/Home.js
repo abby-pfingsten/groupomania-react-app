@@ -1,7 +1,7 @@
-import "../styles/sass/Home.scss"
+import "../styles/Home.scss"
 import Header from "./Header"
 import userPosts from "../models/posts"
-import "../styles/sass/Posts.scss"
+import "../styles/Posts.scss"
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
@@ -9,7 +9,7 @@ import { useState } from "react"
 import { Button } from "@mui/base"
 import Modal from "../components/Modal"
 
-function Home({ mobileHeader }) {
+function Home({ isMobile }) {
   const faCirclePlusElement = <FontAwesomeIcon icon={faCirclePlus} />
   const [isModalOpen, setIsModalOpen] = useState(false)
   const closeModal = () => {
@@ -22,18 +22,18 @@ function Home({ mobileHeader }) {
 
   return (
     <>
-      <Header mobileHeader={mobileHeader} />
+      <Header isMobile={isMobile} />
       <div className="home">
         <h1>Welcome, {userName} </h1>
         {/* <button className="home__button" onClick={() => setIsModalOpen(true)}>
-          {mobileHeader ? faCirclePlusElement : "Create A Post"}
+          {isMobile ? faCirclePlusElement : "Create A Post"}
         </button> */}
         <Button
           variant="outlined"
           className="home__button"
           onClick={() => setIsModalOpen(true)}
         >
-          {mobileHeader ? faCirclePlusElement : "Create A Post"}
+          {isMobile ? faCirclePlusElement : "Create A Post"}
         </Button>
       </div>
       <div className="posts-div">

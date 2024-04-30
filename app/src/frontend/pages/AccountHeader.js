@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import textLogo from "../images/icon-left-font-monochrome-black.svg"
-
 function AccountHeader() {
   return (
     <>

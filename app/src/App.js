@@ -18,41 +18,38 @@ const PrivateRoutes = () => {
 
 function App() {
   // determine whether or not we are in a mobile view
-  const [mobileHeader, setMobileHeader] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
-  const showMobileHeader = () => {
+  const changeToMobile = () => {
     if (window.innerWidth <= 960) {
-      setMobileHeader(true)
+      setIsMobile(true)
     } else {
-      setMobileHeader(false)
+      setIsMobile(false)
     }
   }
-  window.addEventListener("resize", showMobileHeader)
-  window.addEventListener("load", showMobileHeader)
+  window.addEventListener("resize", changeToMobile)
+  window.addEventListener("load", changeToMobile)
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/auth/login" element={<Login />} />
-        <Route exact path="/auth/signup" element={<Signup />} />
+        <Route
+          exact
+          path="/auth/login"
+          element={<Login isMobile={isMobile} />}
+        />
+        <Route
+          exact
+          path="/auth/signup"
+          element={<Signup isMobile={isMobile} />}
+        />
         <Route element={<PrivateRoutes />}>
           <Route
             exact
             path="/"
-            element={<Home mobileHeader={mobileHeader} />}
+            element={<Home isMobile={isMobile} />}
           />
         </Route>
-        {/* <Route
-          exact
-          path="/"
-          element={
-            token ? (
-              <Home mobileHeader={mobileHeader} />
-            ) : (
-              <Navigate to="/auth/login" />
-            )
-          }
-        /> */}
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>

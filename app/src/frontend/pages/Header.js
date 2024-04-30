@@ -1,12 +1,12 @@
 import { Outlet, Link } from "react-router-dom"
-import "../styles/sass/Header.scss"
+import "../styles/Nav.scss"
 import textLogo from "../images/icon-left-font-monochrome-black.svg"
 import iconLogo from "../images/icon.svg"
 import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
-function Header({ mobileHeader }) {
+function Header({ isMobile }) {
 
   const [click, setClick] = useState(false)
 
@@ -26,7 +26,7 @@ function Header({ mobileHeader }) {
           <Link to="/">
             <img
               className="nav-layout__logo"
-              src={mobileHeader ? iconLogo : textLogo}
+              src={isMobile ? iconLogo : textLogo}
               alt="Groupomania Logo"
             ></img>
           </Link>
