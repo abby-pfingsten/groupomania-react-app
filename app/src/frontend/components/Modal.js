@@ -1,4 +1,7 @@
 import React from "react"
+import { useState } from "react"
+import axios from "axios"
+
 import "../styles/Modal.scss"
 import { IoMdClose } from "react-icons/io"
 import { TextField } from "@mui/material"
@@ -8,6 +11,32 @@ import { FormControl } from "@mui/base"
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
 
 const Modal = ({ isModalOpen, onClose }) => {
+  function handlePostSubmission(e) {
+    e.preventDefault()
+    // TODO ----
+    // HAVE IT NOT SUBMIT IF THE TITLE IS NOT PRESENT
+    axios
+      .post("http://localhost:3000/api/auth/post", {
+        title,
+        body,
+        media,
+        UserId
+        // do i have to find the userID here?
+      })
+      .then((response) => {
+        // TODO ----
+        // set ismodal closed to true here
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
+  const [title, setPostTitle] = useState({})
+  const [body, setPostBody] = useState({})
+  const [media, setPostMedia] = useState({})
+  const [UserId, setPostUserId] = useState("jere")
+
   if (isModalOpen !== true) {
     return null
   }
@@ -27,12 +56,14 @@ const Modal = ({ isModalOpen, onClose }) => {
               id="standard-required"
               label="Title"
               variant="standard"
+              onChange={(e) => setPostTitle(e.target.value)}
             />
             <TextField
               id="outlined-multiline-static"
               label="Post"
               multiline
               rows={10}
+              onChange={(e) => setPostBody(e.target.value)}
             />
 
             <input
@@ -42,6 +73,7 @@ const Modal = ({ isModalOpen, onClose }) => {
               id="raised-button-file"
               multiple
               type="file"
+              onChange={(e) => setPostMedia("e.target.value")}
             />
             {/* <label htmlFor="raised-button-file">
               <Button
@@ -53,7 +85,7 @@ const Modal = ({ isModalOpen, onClose }) => {
               </Button>
             </label> */}
             <div className="modal-button text-end">
-              <button>{"Post"}</button>
+              <button onClick={handlePostSubmission}>{"Post"}</button>
             </div>
           </FormControl>
         </main>
