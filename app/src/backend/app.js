@@ -31,6 +31,5 @@ app.use("/images", express.static(path.join(__dirname, "images")))
 app.use("/api/auth", userRouter)
 app.use("/api/auth", postRouter)
 
-
 // // need app.use for login?
 module.exports = app

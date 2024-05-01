@@ -11,7 +11,7 @@ import { FormControl } from "@mui/base"
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
 
 const Modal = ({ isModalOpen, onClose }) => {
-  function handlePostSubmission(e) {
+  function handlePostSubmission(e, onClose) {
     e.preventDefault()
     // TODO ----
     // HAVE IT NOT SUBMIT IF THE TITLE IS NOT PRESENT
@@ -20,12 +20,14 @@ const Modal = ({ isModalOpen, onClose }) => {
         title,
         body,
         media,
-        UserId
+        UserId,
         // do i have to find the userID here?
       })
       .then((response) => {
-        // TODO ----
-        // set ismodal closed to true here
+        console.log("worked")
+
+        // close the modal after a post has been submitted
+        onClose()
       })
       .catch((error) => {
         console.log(error)
@@ -35,7 +37,7 @@ const Modal = ({ isModalOpen, onClose }) => {
   const [title, setPostTitle] = useState({})
   const [body, setPostBody] = useState({})
   const [media, setPostMedia] = useState({})
-  const [UserId, setPostUserId] = useState("jere")
+  const [UserId, setPostUserId] = useState(2)
 
   if (isModalOpen !== true) {
     return null
@@ -85,7 +87,9 @@ const Modal = ({ isModalOpen, onClose }) => {
               </Button>
             </label> */}
             <div className="modal-button text-end">
-              <button onClick={handlePostSubmission}>{"Post"}</button>
+              <button onClick={(e) => handlePostSubmission(e, onClose)}>
+                {"Post"}
+              </button>
             </div>
           </FormControl>
         </main>

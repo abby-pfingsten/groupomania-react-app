@@ -11,6 +11,8 @@ import Modal from "../components/Modal"
 
 function Home({ isMobile }) {
   const faCirclePlusElement = <FontAwesomeIcon icon={faCirclePlus} />
+
+  // determine if the modal is open or closed
   const [isModalOpen, setIsModalOpen] = useState(false)
   const closeModal = () => {
     setIsModalOpen(false)
@@ -51,22 +53,6 @@ function Home({ isMobile }) {
         <Modal isModalOpen={isModalOpen} onClose={closeModal} />
       </section>
       ;
-      {/* <Modal open={isOpen} onClose={() => setIsOpen(false)} className="modal">
-        <Modal.Panel>
-          <Modal.Title>Deactivate account</Modal.Title>
-          <Modal.Description>
-            This will permanently deactivate your account
-          </Modal.Description>
-
-          <p>
-            Are you sure you want to deactivate your account? All of your data
-            will be permanently removed. This action cannot be undone.
-          </p>
-
-          <button onClick={() => setIsOpen(false)}>Deactivate</button>
-          <button onClick={() => setIsOpen(false)}>Cancel</button>
-        </Modal.Panel>
-      </Modal> */}
     </>
   )
 }
