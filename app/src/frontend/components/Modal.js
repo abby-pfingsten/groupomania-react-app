@@ -51,7 +51,7 @@ const Modal = ({ isModalOpen, onClose }) => {
   const [title, setPostTitle] = useState({})
   const [body, setPostBody] = useState({})
   const [media, setPostMedia] = useState({})
-  const [UserId, setPostUserId] = useState(2)
+  const [UserId, setPostUserId] = useState(1)
 
   if (isModalOpen !== true) {
     return null

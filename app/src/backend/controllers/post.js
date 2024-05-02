@@ -4,31 +4,26 @@ const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
 exports.createPost = (req, res, next) => {
-  // if (req.file) {
-  const url = req.protocol + "://" + req.get("host")
-  req.body.post = JSON.parse(req.body.post)
+  let postInfo
+  let mediaInfo
 
-  // const post = Post.create({
-  //   title: req.body.title,
-  //   body: req.body.body,
-  //   media: req.body.media,
-  //   UserId: req.body.UserId,
-  // })
-  // } else {
-  // const post = Post.create({
-  //   title: req.body.title,
-  //   body: req.body.body,
-  //   media: req.body.media,
-  //   UserId: req.body.UserId,
-  // })
-  // }
+  if (req.file) {
+    postInfo = JSON.parse(req.body.post)
+
+    const url = req.protocol + "://" + req.get("host")
+    mediaInfo = url + "/images/" + req.file.filename
+  } else {
+    postInfo = req.body
+    mediaInfo = null
+  }
 
   const post = Post.create({
-    title: req.body.post.title,
-    body: req.body.post.body,
-    media: url + "/images/" + req.file.filename,
-    UserId: req.body.post.UserId,
+    title: postInfo.title,
+    body: postInfo.body,
+    media: mediaInfo,
+    UserId: postInfo.UserId,
   })
+
     .then(() => {
       res.status(201).json({
         message: "Post created successfully!",
