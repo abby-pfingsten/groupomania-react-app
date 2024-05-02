@@ -16,13 +16,22 @@ const Modal = ({ isModalOpen, onClose }) => {
     // TODO ----
     // HAVE IT NOT SUBMIT IF THE TITLE IS NOT PRESENT
     axios
-      .post("http://localhost:3000/api/auth/post", {
-        title,
-        body,
-        media,
-        UserId,
-        // do i have to find the userID here?
-      })
+      .post(
+        "http://localhost:3000/api/auth/post",
+        {
+          title,
+          body,
+          media,
+          UserId,
+          // do i have to find the userID here?
+        },
+        {
+          //Adding token to the request
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
       .then((response) => {
         console.log("worked")
 

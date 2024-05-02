@@ -9,8 +9,8 @@ import { useState } from "react"
 const PrivateRoutes = () => {
   const [token, setToken] = useState(() => {
     // getting stored value
-    const userToken = localStorage.getItem("userToken")
-    const initialValue = JSON.parse(userToken)
+    const userInfo = localStorage.getItem("userInfo")
+    const initialValue = JSON.parse(userInfo)
     return initialValue || ""
   })
   return token ? <Outlet /> : <Navigate to="/auth/login" />
@@ -44,11 +44,7 @@ function App() {
           element={<Signup isMobile={isMobile} />}
         />
         <Route element={<PrivateRoutes />}>
-          <Route
-            exact
-            path="/"
-            element={<Home isMobile={isMobile} />}
-          />
+          <Route exact path="/" element={<Home isMobile={isMobile} />} />
         </Route>
         <Route exact path="/profile" element={<Profile />} />
       </Routes>

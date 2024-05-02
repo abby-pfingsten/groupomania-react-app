@@ -24,7 +24,7 @@ function Home({ isMobile }) {
 
   return (
     <>
-      <Header isMobile={isMobile} />
+      <Header isMobile={isMobile, token} />
       <div className="home">
         <h1>Welcome, {userName} </h1>
         {/* <button className="home__button" onClick={() => setIsModalOpen(true)}>
