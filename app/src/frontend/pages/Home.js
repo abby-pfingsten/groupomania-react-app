@@ -19,12 +19,12 @@ function Home({ isMobile }) {
   }
 
   // grab the name of the user
-  let userObject = localStorage.getItem("userToken")
+  let userObject = localStorage.getItem("userInfo")
   let userName = JSON.parse(userObject)[["name"]]
 
   return (
     <>
-      <Header isMobile={isMobile, token} />
+      <Header isMobile={isMobile} />
       <div className="home">
         <h1>Welcome, {userName} </h1>
         {/* <button className="home__button" onClick={() => setIsModalOpen(true)}>

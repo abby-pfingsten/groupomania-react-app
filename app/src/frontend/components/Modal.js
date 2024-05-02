@@ -11,6 +11,11 @@ import { FormControl } from "@mui/base"
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
 
 const Modal = ({ isModalOpen, onClose }) => {
+
+  // grab token from local storage
+  const userInfo = localStorage.getItem("userInfo")
+  const token = JSON.parse(userInfo)[["token"]]
+
   function handlePostSubmission(e, onClose) {
     e.preventDefault()
     // TODO ----
