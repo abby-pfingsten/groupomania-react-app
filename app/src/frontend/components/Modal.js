@@ -14,6 +14,7 @@ const Modal = ({ isModalOpen, onClose }) => {
   // grab token from local storage
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
+  const userId = JSON.parse(userInfo)[["userId"]]
 
   function handlePostSubmission(e, onClose) {
     e.preventDefault()
@@ -22,10 +23,12 @@ const Modal = ({ isModalOpen, onClose }) => {
 
     const formData = new FormData()
 
-    formData.append("title", title)
-    formData.append("body", body)
-    formData.append("media", media)
-    formData.append("UserId", UserId)
+    // formData.append("title", title)
+    // formData.append("body", body)
+    // formData.append("media", media)
+    // formData.append("UserId", UserId)
+    formData.append("post", JSON.stringify({ title, body, UserId: userId }))
+    formData.append("image", media)
 
     axios
       .post(
@@ -91,7 +94,7 @@ const Modal = ({ isModalOpen, onClose }) => {
               id="raised-button-file"
               // multiple
               type="file"
-              onChange={(e) => setPostMedia(e.target.value)}
+              onChange={(e) => setPostMedia(e.target.files[0])}
             />
             <div className="modal-button text-end">
               <button onClick={(e) => handlePostSubmission(e, onClose)}>
