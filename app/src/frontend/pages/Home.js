@@ -1,6 +1,5 @@
 import "../styles/Home.scss"
 import Header from "./Header"
-import userPosts from "../models/posts"
 import axios from "axios"
 import "../styles/Posts.scss"
 import { Link } from "react-router-dom"
@@ -32,9 +31,8 @@ function Home({ isMobile }) {
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
 
-  const [userPosts2, setUserPosts] = useState([])
+  const [userPosts, setUserPosts] = useState([])
   useEffect(() => {
-    // fetchData()
     function getAllPosts() {
       axios
         .get("http://localhost:3000/api/auth/getposts", {
@@ -50,21 +48,8 @@ function Home({ isMobile }) {
         .catch((error) => console.log(error))
     }
     getAllPosts()
-    // const userPosts = getAllPosts()
-    //Runs on every render
   }, [token])
 
-  // Define an asynchronous function 'fetchData'
-  // const fetchData = async () => {
-  //   // Send an HTTP GET request to the specified URL
-  //   const response = await axios.get("http://localhost:3000/api/auth/getposts")
-
-  //   // Log the response from the API to the console
-  //   console.log("response", response)
-
-  //   // Update the 'data' state with the data from the API response
-  //   // setUserPosts(response.data)
-  // }
 
   return (
     <>
@@ -80,7 +65,7 @@ function Home({ isMobile }) {
         </Button>
       </div>
       <div className="posts-div">
-        {userPosts2.map((post, index) => (
+        {userPosts.map((post, index) => (
           <Link key={`${post.title}-${index}`} className="posts-link">
             <section className="posts">
               <h2 className="posts__title">{post.title}</h2>
