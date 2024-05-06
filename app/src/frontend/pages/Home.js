@@ -29,19 +29,42 @@ function Home({ isMobile }) {
   //   })
   // }
 
-  // const [userPosts, setUserPosts] = useState({})
-  // useEffect(() => {
-  //   function getAllPosts() {
-  //     axios.get("http://localhost:3000/api/auth/").then((response) => {
-  //       console.log("Successfully grabbed all posts")
-  //       setUserPosts(response)
-  //     })
-  //   }
-  //   getAllPosts()
-  //   // setUserPosts(getAllPosts())
-  //   // const userPosts = getAllPosts()
-  //   //Runs on every render
-  // }, [])
+  const userInfo = localStorage.getItem("userInfo")
+  const token = JSON.parse(userInfo)[["token"]]
+
+  const [userPosts2, setUserPosts] = useState([])
+  useEffect(() => {
+    // fetchData()
+    function getAllPosts() {
+      axios
+        .get("http://localhost:3000/api/auth/getposts", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log("Successfully grabbed all posts")
+          console.log(response.data)
+          setUserPosts(response.data)
+        })
+        .catch((error) => console.log(error))
+    }
+    getAllPosts()
+    // const userPosts = getAllPosts()
+    //Runs on every render
+  }, [token])
+
+  // Define an asynchronous function 'fetchData'
+  // const fetchData = async () => {
+  //   // Send an HTTP GET request to the specified URL
+  //   const response = await axios.get("http://localhost:3000/api/auth/getposts")
+
+  //   // Log the response from the API to the console
+  //   console.log("response", response)
+
+  //   // Update the 'data' state with the data from the API response
+  //   // setUserPosts(response.data)
+  // }
 
   return (
     <>
@@ -57,7 +80,7 @@ function Home({ isMobile }) {
         </Button>
       </div>
       <div className="posts-div">
-        {userPosts.map((post, index) => (
+        {userPosts2.map((post, index) => (
           <Link key={`${post.title}-${index}`} className="posts-link">
             <section className="posts">
               <h2 className="posts__title">{post.title}</h2>
