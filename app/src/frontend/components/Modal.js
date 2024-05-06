@@ -11,7 +11,6 @@ import { FormControl } from "@mui/base"
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
 
 const Modal = ({ isModalOpen, onClose }) => {
-
   // grab token from local storage
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
@@ -20,16 +19,21 @@ const Modal = ({ isModalOpen, onClose }) => {
     e.preventDefault()
     // TODO ----
     // HAVE IT NOT SUBMIT IF THE TITLE IS NOT PRESENT
+
+    const formData = new FormData()
+
+    formData.append("title", title)
+    formData.append("body", body)
+    formData.append("media", media)
+    formData.append("UserId", UserId)
+
     axios
       .post(
         "http://localhost:3000/api/auth/post",
-        {
-          title,
-          body,
-          media,
-          UserId,
-          // do i have to find the userID here?
-        },
+        formData,
+        // do i have to find the userID here?
+        // get from local storage
+
         {
           //Adding token to the request
           headers: {
@@ -50,8 +54,8 @@ const Modal = ({ isModalOpen, onClose }) => {
 
   const [title, setPostTitle] = useState({})
   const [body, setPostBody] = useState({})
-  const [media, setPostMedia] = useState({})
-  const [UserId, setPostUserId] = useState(1)
+  const [media, setPostMedia] = useState(null)
+  const UserId = JSON.parse(userInfo)[["userId"]]
 
   if (isModalOpen !== true) {
     return null
@@ -83,23 +87,12 @@ const Modal = ({ isModalOpen, onClose }) => {
             />
 
             <input
-              accept="image/*"
-              //   className={classes.input}
-              //   style={{ display: "none" }}
+              // accept="image/*"
               id="raised-button-file"
-              multiple
+              // multiple
               type="file"
-              onChange={(e) => setPostMedia("e.target.value")}
+              onChange={(e) => setPostMedia(e.target.value)}
             />
-            {/* <label htmlFor="raised-button-file">
-              <Button
-                variant="raised"
-                component="span"
-                // className={classes.button}
-              >
-                Upload
-              </Button>
-            </label> */}
             <div className="modal-button text-end">
               <button onClick={(e) => handlePostSubmission(e, onClose)}>
                 {"Post"}

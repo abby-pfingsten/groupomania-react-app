@@ -3,7 +3,9 @@ const multer = require("multer")
 const MIME_TYPES = {
   "image/jpg": "jpg",
   "image/jpeg": "jpg",
-  "image/png": "png",
+  "image/png": "png"
+  // find mp3 and mp4 mime types
+
 }
 
 const storage = multer.diskStorage({
