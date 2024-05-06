@@ -36,3 +36,17 @@ exports.createPost = (req, res, next) => {
       })
     })
 }
+
+exports.getAllPosts = (req, res, next) => {
+  // find method returns an array containing all of the
+  // posts in the database
+  Post.find()
+    .then((posts) => {
+      res.status(200).json(posts)
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: error,
+      })
+    })
+}
