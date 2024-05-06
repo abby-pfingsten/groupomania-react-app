@@ -23,29 +23,18 @@ const Modal = ({ isModalOpen, onClose }) => {
 
     const formData = new FormData()
 
-    // formData.append("title", title)
-    // formData.append("body", body)
-    // formData.append("media", media)
-    // formData.append("UserId", UserId)
     formData.append("post", JSON.stringify({ title, body, UserId: userId }))
     formData.append("image", media)
 
     axios
-      .post(
-        "http://localhost:3000/api/auth/post",
-        formData,
-        // do i have to find the userID here?
-        // get from local storage
-
-        {
-          //Adding token to the request
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      )
+      .post("http://localhost:3000/api/auth/post", formData, {
+        //Adding token to the request
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((response) => {
-        console.log("worked")
+        console.log("Post successful.")
 
         // close the modal after a post has been submitted
         onClose()
@@ -58,7 +47,6 @@ const Modal = ({ isModalOpen, onClose }) => {
   const [title, setPostTitle] = useState({})
   const [body, setPostBody] = useState({})
   const [media, setPostMedia] = useState(null)
-  const UserId = JSON.parse(userInfo)[["userId"]]
 
   if (isModalOpen !== true) {
     return null
