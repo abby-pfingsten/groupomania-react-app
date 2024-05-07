@@ -10,6 +10,8 @@ import { Button } from "@mui/base"
 import Modal from "../components/Modal"
 
 function Home({ isMobile }) {
+  // TODO ----
+  // have to display something if no posts
   const faCirclePlusElement = <FontAwesomeIcon icon={faCirclePlus} />
 
   // determine if the modal is open or closed
@@ -66,7 +68,7 @@ function Home({ isMobile }) {
             <section className="posts">
               <h2 className="posts__title">{post.title}</h2>
               <p className="posts__body">{post.body}</p>
-              <div className="posts__media">{post.media}</div>
+              {/* <div className="posts__media">{post.media}</div> */}
             </section>
           </Link>
         ))}
