@@ -35,7 +35,8 @@ const Modal = ({ isModalOpen, onClose }) => {
       })
       .then((response) => {
         console.log("Post successful.")
-
+        console.log(response)
+        // TODO --- not working without media
         // close the modal after a post has been submitted
         onClose()
       })

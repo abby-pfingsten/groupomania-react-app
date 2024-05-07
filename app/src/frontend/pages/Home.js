@@ -22,15 +22,11 @@ function Home({ isMobile }) {
   let userObject = localStorage.getItem("userInfo")
   let userName = JSON.parse(userObject)[["name"]]
 
-  // function getAllPosts() {
-  //   axios.get("http://localhost:3000/api/auth/").then((response) => {
-  //     console.log("Successfully grabbed all posts")
-  //   })
-  // }
 
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
 
+  // get all posts whenever token changes
   const [userPosts, setUserPosts] = useState([])
   useEffect(() => {
     function getAllPosts() {

@@ -13,7 +13,8 @@ exports.createPost = (req, res, next) => {
     const url = req.protocol + "://" + req.get("host")
     mediaInfo = url + "/images/" + req.file.filename
   } else {
-    postInfo = req.body
+    console.log('test')
+    postInfo = JSON.parse(req.body.post)
     mediaInfo = null
   }
 
