@@ -13,7 +13,7 @@ exports.createPost = (req, res, next) => {
     const url = req.protocol + "://" + req.get("host")
     mediaInfo = url + "/images/" + req.file.filename
   } else {
-    console.log('test')
+    console.log("test")
     postInfo = JSON.parse(req.body.post)
     mediaInfo = null
   }
@@ -48,6 +48,27 @@ exports.getAllPosts = (req, res, next) => {
     .catch((error) => {
       res.status(400).json({
         error: error,
+      })
+    })
+}
+
+exports.getOnePost = (req, res, next) => {
+  Post.findByPk(req.params.postid)
+    .then((post) => {
+      if (post) {
+        res.status(200).json(post)
+      } else {
+        res.status(404).json({
+          error: "Post not found",
+        })
+      }
+      console.log("found one post")
+    })
+    .catch((error) => {
+      console.log(error)
+
+      res.status(404).json({
+        error: error.message,
       })
     })
 }
