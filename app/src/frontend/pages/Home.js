@@ -24,7 +24,6 @@ function Home({ isMobile }) {
   let userObject = localStorage.getItem("userInfo")
   let userName = JSON.parse(userObject)[["name"]]
 
-
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
 
@@ -48,7 +47,6 @@ function Home({ isMobile }) {
     getAllPosts()
   }, [token])
 
-
   return (
     <>
       <Header isMobile={isMobile} />
@@ -64,7 +62,11 @@ function Home({ isMobile }) {
       </div>
       <div className="posts-div">
         {userPosts.map((post, index) => (
-          <Link key={`${post.title}-${index}`} className="posts-link">
+          <Link
+            to={`/${post.id}`}
+            key={`${post.title}-${index}`}
+            className="posts-link"
+          >
             <section className="posts">
               <h2 className="posts__title">{post.title}</h2>
               <p className="posts__body">{post.body}</p>
