@@ -5,6 +5,7 @@ import Home from "./frontend/pages/Home"
 import Profile from "./frontend/pages/Profile"
 import { Outlet, Navigate } from "react-router-dom"
 import { useState } from "react"
+import PostPage from "./frontend/pages/PostPage"
 
 const PrivateRoutes = () => {
   const [token, setToken] = useState(() => {
@@ -45,6 +46,11 @@ function App() {
         />
         <Route element={<PrivateRoutes />}>
           <Route exact path="/" element={<Home isMobile={isMobile} />} />
+          <Route
+            exact
+            path="/:postid"
+            element={<PostPage isMobile={isMobile} />}
+          />
         </Route>
         <Route exact path="/profile" element={<Profile />} />
       </Routes>
