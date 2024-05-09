@@ -29,6 +29,11 @@ function Home({ isMobile }) {
 
   // get all posts whenever token changes
   const [userPosts, setUserPosts] = useState([])
+
+  const [successfulPost, setSuccessfulPost] = useState(false)
+  const toggleSuccess = () => {
+    setSuccessfulPost(!successfulPost)
+  }
   useEffect(() => {
     function getAllPosts() {
       axios
@@ -45,7 +50,7 @@ function Home({ isMobile }) {
         .catch((error) => console.log(error))
     }
     getAllPosts()
-  }, [token])
+  }, [token, successfulPost])
 
   return (
     <>
@@ -70,13 +75,18 @@ function Home({ isMobile }) {
             <section className="posts">
               <h2 className="posts__title">{post.title}</h2>
               <p className="posts__body">{post.body}</p>
+              {/* TODO: put timestamp of created at */}
               {/* <div className="posts__media">{post.media}</div> */}
             </section>
           </Link>
         ))}
       </div>
       <section>
-        <Modal isModalOpen={isModalOpen} onClose={closeModal} />
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={closeModal}
+          toggleSuccess={toggleSuccess}
+        />
       </section>
       ;
     </>

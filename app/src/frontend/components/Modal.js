@@ -10,7 +10,7 @@ import { FormControl } from "@mui/base"
 // Source:
 // https://blog.openreplay.com/creating-easy-custom-modals-with-react/
 
-const Modal = ({ isModalOpen, onClose }) => {
+const Modal = ({ isModalOpen, onClose, toggleSuccess }) => {
   // grab token from local storage
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
@@ -36,7 +36,7 @@ const Modal = ({ isModalOpen, onClose }) => {
       .then((response) => {
         console.log("Post successful.")
         console.log(response)
-        // TODO --- not working without media
+        toggleSuccess()
         // close the modal after a post has been submitted
         onClose()
       })

@@ -41,7 +41,9 @@ exports.createPost = (req, res, next) => {
 exports.getAllPosts = (req, res, next) => {
   // find method returns an array containing all of the
   // posts in the database
-  Post.findAll()
+  Post.findAll({
+    order: [["createdAt", "DESC"]],
+  })
     .then((posts) => {
       res.status(200).json(posts)
     })
