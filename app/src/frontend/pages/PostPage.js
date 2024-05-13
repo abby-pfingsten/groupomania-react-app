@@ -56,9 +56,23 @@ function PostPage({ isMobile }) {
       <div className="posts-div">
         <section className="posts">
           <h2 className="posts__title">{singleUserPost.title}</h2>
-                  <p className="posts__body">{singleUserPost.body}</p>
-                  
-          <div className="posts__media">{singleUserPost.media}</div>
+          <p className="posts__body">{singleUserPost.body}</p>
+          {(() => {
+            switch (mediaType) {
+              case "mp3":
+                return "this is audio"
+              //                         <audio controls>
+              //   <source src="horse.ogg" type="audio/ogg">
+              //   <source src="horse.mp3" type="audio/mpeg">
+              //   Your browser does not support the audio tag.
+              // </audio>}
+              case "mp4":
+                return "this is video"
+              default:
+                return null
+            }
+          })()}
+          {/* <div className="posts__media">{singleUserPost.media}</div> */}
           <div className="posts__media">{singleUserPost.createdAt}</div>
         </section>
       </div>
