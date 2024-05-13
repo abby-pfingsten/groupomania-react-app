@@ -77,9 +77,28 @@ function PostPage({ isMobile }) {
                   </div>
                 )
               case "jpg":
-                return "this is image"
+                return (
+                  <div className="posts__media">
+                    <img
+                      src={singleUserPost.media}
+                      alt="Users post"
+                      width="500"
+                      height="600"
+                    />
+                  </div>
+                )
+
               case "png":
-                return "this is image"
+                return (
+                  <div className="posts__media">
+                    <img
+                      src={singleUserPost.media}
+                      alt="Users post"
+                      width="500"
+                      height="600"
+                    />
+                  </div>
+                )
               default:
                 return null
             }
