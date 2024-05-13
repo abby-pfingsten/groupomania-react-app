@@ -44,7 +44,6 @@ function Home({ isMobile }) {
         })
         .then((response) => {
           console.log("Successfully grabbed all posts")
-          console.log(response.data)
           setUserPosts(response.data)
         })
         .catch((error) => console.log(error))
