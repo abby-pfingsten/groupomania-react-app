@@ -60,20 +60,31 @@ function PostPage({ isMobile }) {
           {(() => {
             switch (mediaType) {
               case "mp3":
-                return "this is audio"
-              //                         <audio controls>
-              //   <source src="horse.ogg" type="audio/ogg">
-              //   <source src="horse.mp3" type="audio/mpeg">
-              //   Your browser does not support the audio tag.
-              // </audio>}
+                return (
+                  <div className="posts__media">
+                    <audio controls>
+                      <source src={singleUserPost.media} type="audio/mp3" />
+                    </audio>
+                  </div>
+                )
+
               case "mp4":
-                return "this is video"
+                return (
+                  <div className="posts__media">
+                    <video width="320" height="240" controls>
+                      <source src={singleUserPost.media} type="video/mp4" />
+                    </video>
+                  </div>
+                )
+              case "jpg":
+                return "this is image"
+              case "png":
+                return "this is image"
               default:
                 return null
             }
           })()}
-          {/* <div className="posts__media">{singleUserPost.media}</div> */}
-          <div className="posts__media">{singleUserPost.createdAt}</div>
+          <div>{singleUserPost.createdAt}</div>
         </section>
       </div>
     </>
