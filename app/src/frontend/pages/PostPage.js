@@ -49,6 +49,10 @@ function PostPage({ isMobile }) {
     }
     getOnePost()
   }, [token, postId])
+    
+    // formatting the date
+    const postDate = new Date(singleUserPost.createdAt).toUTCString()
+    console.log(postDate)
 
   return (
     <>
@@ -103,7 +107,7 @@ function PostPage({ isMobile }) {
                 return null
             }
           })()}
-          <div>{singleUserPost.createdAt}</div>
+          <div className="posts__date">{postDate}</div>
         </section>
       </div>
     </>
