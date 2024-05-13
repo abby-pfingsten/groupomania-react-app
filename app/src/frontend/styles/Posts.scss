@@ -20,7 +20,8 @@
 }
 // styling for each individual post
 .posts {
-  width: 90%;
+  display: flex;
+  flex-direction: column;
   margin-left: 5px;
   padding: 10px;
   border-radius: 3ch;
@@ -37,6 +38,13 @@
   &__title {
     font-weight: bold;
     padding-bottom: 10px;
+  }
+  &__date {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    align-self: flex-end;
+    padding-right: 5px;
   }
 }
 
