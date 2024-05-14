@@ -74,3 +74,84 @@ exports.getOnePost = (req, res, next) => {
       })
     })
 }
+
+exports.markPostAsRead = (req, res, next) => {
+  Post.findOne({ id: req.params.id }).then((readPosts) => {
+    let currentPost = new Post({ id: req.params.id })
+    const currentUser = req.body.UserId
+
+    // initialize the empty array
+    // and users liked/disliked arrays
+    let newReadUsers  = []
+    let readUsers = [...readPosts.usersRead]
+
+    // if (req.body.like === 1) {
+    //   // you only want a user to be able to like
+    //   if (!readPosts.usersLiked.includes(requestUserId)) {
+    //     ;({ dislikedUsers, dislikeCount, likedUsers, likeCount } =
+    //       resetLikeCount(
+    //         dislikedUsers,
+    //         requestUserId,
+    //         dislikeCount,
+    //         likedUsers,
+    //         likeCount
+    //       ))
+
+    //     likeCount += 1
+    //     likedUsers.push(requestUserId)
+    //   }
+    // } else if (req.body.like === -1) {
+    //   if (!readPosts.usersDisliked.includes(requestUserId)) {
+    //     ;({ dislikedUsers, dislikeCount, likedUsers, likeCount } =
+    //       resetLikeCount(
+    //         dislikedUsers,
+    //         requestUserId,
+    //         dislikeCount,
+    //         likedUsers,
+    //         likeCount
+    //       ))
+
+    //     dislikeCount += 1
+    //     dislikedUsers.push(requestUserId)
+    //   }
+    // } else {
+    //   // you only want this chunk to do anything if the
+    //   // user is the same aka they have already liked
+    //   // or disliked something
+    //   ;({ dislikedUsers, dislikeCount, likedUsers, likeCount } = resetLikeCount(
+    //     dislikedUsers,
+    //     requestUserId,
+    //     dislikeCount,
+    //     likedUsers,
+    //     likeCount
+    //   ))
+    // }
+
+    // sauce = {
+    //   _id: req.params.id,
+    //   userId: readPosts.userId,
+    //   name: readPosts.name,
+    //   manufacturer: readPosts.manufacturer,
+    //   description: readPosts.description,
+    //   mainPepper: readPosts.mainPepper,
+    //   imageUrl: readPosts.imageUrl,
+    //   heat: readPosts.heat,
+    //   likes: (readPosts.likes += likeCount),
+    //   dislikes: (readPosts.dislikes += dislikeCount),
+    //   usersLiked: likedUsers,
+    //   usersDisliked: dislikedUsers,
+    // }
+    // }
+    // Post.updateOne({ _id: req.params.id }, sauce)
+    //   .then(() => {
+    //     res.status(201).json({
+    //       message: "Sauce likes updated successfully!",
+    //     })
+    //   })
+    //   .catch((error) => {
+    //     res.status(400).json({
+    //       error: error,
+    //     })
+    //   })
+  })
+}

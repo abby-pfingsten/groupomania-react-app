@@ -1,6 +1,7 @@
 "use strict"
 const { Model } = require("sequelize")
-// const { User } = require("../models")
+const { Sequelize } = require(".")
+
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     /**
@@ -17,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       title: DataTypes.STRING,
       body: DataTypes.STRING,
       media: { type: DataTypes.STRING, allowNull: true },
+      usersRead: {
+        type: DataTypes.JSON,
+      },
     },
     {
       sequelize,
