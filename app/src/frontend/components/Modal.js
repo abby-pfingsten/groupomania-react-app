@@ -27,7 +27,7 @@ const Modal = ({ isModalOpen, onClose, toggleSuccess }) => {
     formData.append("image", media)
 
     axios
-      .post("http://localhost:3000/api/auth/post", formData, {
+      .post("http://localhost:3000/api/posts", formData, {
         //Adding token to the request
         headers: {
           Authorization: `Bearer ${token}`,

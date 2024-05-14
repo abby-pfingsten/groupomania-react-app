@@ -29,7 +29,7 @@ app.use((req, res, next) => {
 // // app.use("/api/stuff", stuffRoutes);
 app.use("/images", express.static(path.join(__dirname, "images")))
 app.use("/api/auth", userRouter)
-app.use("/api/auth", postRouter)
+app.use("/api/posts", postRouter)
 
 // // need app.use for login?
 module.exports = app

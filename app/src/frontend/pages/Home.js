@@ -37,7 +37,7 @@ function Home({ isMobile }) {
   useEffect(() => {
     function getAllPosts() {
       axios
-        .get("http://localhost:3000/api/auth/getposts", {
+        .get("http://localhost:3000/api/posts", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

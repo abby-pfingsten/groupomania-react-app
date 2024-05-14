@@ -33,7 +33,7 @@ function PostPage({ isMobile }) {
   useEffect(() => {
     function getOnePost() {
       axios
-        .get("http://localhost:3000/api/auth/" + postId, {
+        .get("http://localhost:3000/api/posts/" + postId, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
