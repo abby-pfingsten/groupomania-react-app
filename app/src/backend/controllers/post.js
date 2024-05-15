@@ -77,22 +77,38 @@ exports.getOnePost = (req, res, next) => {
 
 exports.markPostAsRead = (req, res, next) => {
   console.log("this is a breakpoint")
-  Post.findOne({ postid: req.params.postid })
+  // const currentUser = req.body.userId
+
+  Post.findOne({ where: { id: parseInt(req.params.postid) } })
     .then((readPosts) => {
+      let currentPost = new Post({ id: req.params.postid })
+      const currentUser = req.body.userId
+
+      // initialize the empty array
+      // and users liked/disliked arrays
+      let newReadUsers = []
+      let readUsers = []
+      if (JSON.parse(readPosts.usersRead)) {
+        let readUsers = [...JSON.parse(readPosts.usersRead)]
+      }
+      // let readUsers = [...JSON.parse(readPosts.usersRead)]
+
+      if (!readUsers.includes(currentUser)) {
+        readUsers.push(currentUser)
+      }
+
       console.log("here")
       console.log(readPosts)
+
+      // currentPost = {
+      //   id: req.params.postid,
+      //   name: req.p
+      // }
     })
     .catch((error) => {
       console.log(error)
       console.log("error here")
     })
-  //   let currentPost = new Post({ id: req.params.id })
-  //   const currentUser = req.body.UserId
-
-  // initialize the empty array
-  // and users liked/disliked arrays
-  // let newReadUsers  = []
-  // let readUsers = [...readPosts.usersRead]
 
   // if (req.body.like === 1) {
   //   // you only want a user to be able to like
