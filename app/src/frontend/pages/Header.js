@@ -38,28 +38,34 @@ function Header({ isMobile }) {
             {click ? faXElement : faBarsElement}
             {/* </Link> */}
           </div>
-          <ul className={click ? "nav_menu__open" : "nav_menu__closed"}>
-            <li className="nav_menu_links">
-              <Link to="/" onClick={closeMobileMenu}>
-                Home
-              </Link>
-            </li>
-            <li className="nav_menu_links">
-              <Link to="/" onClick={closeMobileMenu}>
-                Create a Post
-              </Link>
-            </li>
-            <li className="nav_menu_links">
-              <Link to="/profile" onClick={closeMobileMenu}>
-                Account
-              </Link>
-            </li>
-            <li className="nav_menu_links">
-              <Link to="/" onClick={closeMobileMenu}>
-                Logout
-              </Link>
-            </li>
-          </ul>
+          {click ? (
+            <>
+              <ul>
+                <li className="nav_menu_links">
+                  <Link to="/" onClick={closeMobileMenu}>
+                    Home
+                  </Link>
+                </li>
+                <li className="nav_menu_links">
+                  <Link to="/" onClick={closeMobileMenu}>
+                    Create a Post
+                  </Link>
+                </li>
+                <li className="nav_menu_links">
+                  <Link to="/profile" onClick={closeMobileMenu}>
+                    Account
+                  </Link>
+                </li>
+                <li className="nav_menu_links">
+                  <Link to="/" onClick={closeMobileMenu}>
+                    Logout
+                  </Link>
+                </li>
+              </ul>
+            </>
+          ) : (
+            <></>
+          )}
         </div>
       </nav>
       <Outlet />
