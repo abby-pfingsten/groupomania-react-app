@@ -2,12 +2,7 @@ import "../styles/Home.scss"
 import Header from "./Header"
 import axios from "axios"
 import "../styles/Posts.scss"
-import { Link } from "react-router-dom"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
 import { useState, useEffect } from "react"
-import { Button } from "@mui/base"
-import Modal from "../components/Modal"
 
 function PostPage({ isMobile }) {
   // grab the token from local storage
@@ -65,25 +60,25 @@ function PostPage({ isMobile }) {
             switch (mediaType) {
               case "mp3":
                 return (
-                  <div className="posts__media">
+                  <div className="posts__audio">
                     <audio controls>
                       <source src={singleUserPost.media} type="audio/mp3" />
                     </audio>
                   </div>
                 )
-              // TODO -- put width/height in sass make it width 100%
               case "mp4":
                 return (
-                  <div className="posts__media">
-                    <video width="320" height="240" controls>
+                  <div className="posts__video">
+                    <video controls>
                       <source src={singleUserPost.media} type="video/mp4" />
                     </video>
                   </div>
                 )
               case "jpg" || "png":
                 return (
-                  <div className="posts__media">
+                  <div>
                     <img
+                      className="posts__image"
                       src={singleUserPost.media}
                       alt="Users post"
                       // width="500"
