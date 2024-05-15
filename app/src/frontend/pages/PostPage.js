@@ -49,10 +49,10 @@ function PostPage({ isMobile }) {
     }
     getOnePost()
   }, [token, postId])
-    
-    // formatting the date
-    const postDate = new Date(singleUserPost.createdAt).toUTCString()
-    console.log(postDate)
+
+  // formatting the date
+  const postDate = new Date(singleUserPost.createdAt).toUTCString()
+  console.log(postDate)
 
   return (
     <>
@@ -71,7 +71,7 @@ function PostPage({ isMobile }) {
                     </audio>
                   </div>
                 )
-
+              // TODO -- put width/height in sass make it width 100%
               case "mp4":
                 return (
                   <div className="posts__media">
@@ -80,29 +80,18 @@ function PostPage({ isMobile }) {
                     </video>
                   </div>
                 )
-              case "jpg":
+              case "jpg" || "png":
                 return (
                   <div className="posts__media">
                     <img
                       src={singleUserPost.media}
                       alt="Users post"
-                      width="500"
-                      height="600"
+                      // width="500"
+                      // height="600"
                     />
                   </div>
                 )
 
-              case "png":
-                return (
-                  <div className="posts__media">
-                    <img
-                      src={singleUserPost.media}
-                      alt="Users post"
-                      width="500"
-                      height="600"
-                    />
-                  </div>
-                )
               default:
                 return null
             }
