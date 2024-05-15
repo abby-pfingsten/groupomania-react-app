@@ -81,7 +81,6 @@ exports.markPostAsRead = (req, res, next) => {
 
   Post.findOne({ where: { id: parseInt(req.params.postid) } })
     .then((readPosts) => {
-      let currentPost = new Post({ id: req.params.postid })
       const currentUser = req.body.userId
 
       // initialize the empty array
@@ -99,6 +98,11 @@ exports.markPostAsRead = (req, res, next) => {
 
       console.log("here")
       console.log(readPosts)
+
+      readPosts.usersRead = readUsers
+      readPosts.save()
+
+      // let currentPost = new Post({ id: req.params.postid })
 
       // currentPost = {
       //   id: req.params.postid,
