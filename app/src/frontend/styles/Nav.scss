@@ -20,8 +20,12 @@
     padding-left: 20px;
     padding-right: 20px;
   }
-  &__menu a {
+  &__menu {
     color: $dark-red-color;
     font-size: 30px;
   }
 }
+ .nav_menu {
+    color: $dark-red-color;
+    font-size: 30px;
+  }
