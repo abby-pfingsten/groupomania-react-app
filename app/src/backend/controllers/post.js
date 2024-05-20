@@ -78,24 +78,15 @@ exports.getOnePost = (req, res, next) => {
 exports.markPostAsRead = (req, res, next) => {
   console.log("this is a breakpoint")
   // const currentUser = req.body.userId
-
-  Post.findOne({ where: { id: parseInt(req.params.postid) } })
-    .then((readPosts) => {
+  Post.findByPk(req.params.postid)
+    // Post.findOne({ where: { id: parseInt(req.params.postid) } })
+    .then((post) => {
       const currentUser = req.body.userId
 
-      let newReadUsers = []
-
-      let readUsers = []
-
-      if (JSON.parse(readPosts.usersRead)) {
-        readUsers.push(JSON.parse(readPosts.usersRead))
-      }
-      // const readUsers = !!JSON.parse(readPosts.usersRead)
-      //   ? JSON.parse(readPosts.usersRead)
-      //   : []
+      let readUsers = post.usersRead ?? []
 
       console.log(readUsers)
-      // let readUsers = [...JSON.parse(readPosts.usersRead)]
+      // let readUsers = [...JSON.parse(post.usersRead)]
 
       if (!readUsers.includes(currentUser)) {
         // let newReadUsers = [...[readUsers]]
@@ -103,10 +94,10 @@ exports.markPostAsRead = (req, res, next) => {
       }
 
       console.log("here")
-      console.log(readPosts)
+      console.log(post)
 
-      readPosts.usersRead = readUsers
-      readPosts.save()
+      post.usersRead = readUsers
+      post.save()
 
       // let currentPost = new Post({ id: req.params.postid })
 

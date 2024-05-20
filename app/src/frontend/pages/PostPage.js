@@ -24,7 +24,9 @@ function PostPage({ isMobile }) {
   // function to get the file extension
   function getFileExtension(filename) {
     if (filename) {
+      console.log(filename)
       const extension = filename.split(".").pop()
+      console.log("extension", extension)
       setMediaType(extension)
     }
   }
@@ -54,12 +56,13 @@ function PostPage({ isMobile }) {
             setHasUsersRead(true)
           }
 
+          console.log("response data", response.data.media)
           getFileExtension(response.data.media)
         })
-        .catch((error) => console.log(error))
+        .catch((error) => console.log(error, "here error"))
     }
     getOnePost()
-  }, [token, postId, userId])
+  }, [token, postId])
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
