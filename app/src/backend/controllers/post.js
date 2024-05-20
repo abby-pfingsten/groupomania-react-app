@@ -83,17 +83,19 @@ exports.markPostAsRead = (req, res, next) => {
     .then((readPosts) => {
       const currentUser = req.body.userId
 
-      // initialize the empty array
-      // and users liked/disliked arrays
       let newReadUsers = []
-      let readUsers = []
-      if (JSON.parse(readPosts.usersRead)) {
-        let readUsers = [...JSON.parse(readPosts.usersRead)]
-      }
+
+      // let readUsers =
+      const readUsers = !!JSON.parse(readPosts.usersRead)
+        ? JSON.parse(readPosts.usersRead)
+        : []
+
+      console.log(readUsers)
       // let readUsers = [...JSON.parse(readPosts.usersRead)]
 
-      if (!readUsers.includes(currentUser)) {
-        readUsers.push(currentUser)
+      if (![readUsers].includes(currentUser)) {
+        let newReadUsers = [...[readUsers]]
+        newReadUsers.push(currentUser)
       }
 
       console.log("here")
