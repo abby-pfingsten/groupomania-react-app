@@ -3,7 +3,7 @@ import Header from "./Header"
 import axios from "axios"
 import "../styles/Posts.scss"
 import { useState, useEffect } from "react"
-import { faLinesLeaning } from "@fortawesome/free-solid-svg-icons"
+// import { faLinesLeaning } from "@fortawesome/free-solid-svg-icons"
 
 function PostPage({ isMobile }) {
   // grab the token from local storage
@@ -39,17 +39,16 @@ function PostPage({ isMobile }) {
         .then((response) => {
           console.log("Successfully grabbed one post")
           setSingleUserPost(response.data)
-          console.log(typeof response.data.usersRead)
-          console.log(response.data.usersRead)
+          // console.log(typeof response.data.usersRead)
+          // console.log(response.data.usersRead)
 
+          // checks to see if the userId is inside
+          // object
           let exists = Object.values(response.data.usersRead).includes(userId)
 
-          console.log(exists)
+          // console.log(exists)
           if (exists) {
             setHasUsersRead(true)
-            console.log("in if")
-          } else {
-            console.log("other if")
           }
 
           getFileExtension(response.data.media)
@@ -94,8 +93,6 @@ function PostPage({ isMobile }) {
                       className="posts__image"
                       src={singleUserPost.media}
                       alt="Users post"
-                      // width="500"
-                      // height="600"
                     />
                   </div>
                 )
@@ -105,6 +102,7 @@ function PostPage({ isMobile }) {
             }
           })()}
           <div className="posts__date">{postDate}</div>
+          {hasUserRead ? <div>Read</div> : <></>}
         </section>
       </div>
     </>
