@@ -59,7 +59,7 @@ function PostPage({ isMobile }) {
         .catch((error) => console.log(error))
     }
     getOnePost()
-  }, [token, postId])
+  }, [token, postId, userId])
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
