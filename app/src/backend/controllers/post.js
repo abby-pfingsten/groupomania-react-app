@@ -85,17 +85,21 @@ exports.markPostAsRead = (req, res, next) => {
 
       let newReadUsers = []
 
-      // let readUsers =
-      const readUsers = !!JSON.parse(readPosts.usersRead)
-        ? JSON.parse(readPosts.usersRead)
-        : []
+      let readUsers = []
+
+      if (JSON.parse(readPosts.usersRead)) {
+        readUsers.push(JSON.parse(readPosts.usersRead))
+      }
+      // const readUsers = !!JSON.parse(readPosts.usersRead)
+      //   ? JSON.parse(readPosts.usersRead)
+      //   : []
 
       console.log(readUsers)
       // let readUsers = [...JSON.parse(readPosts.usersRead)]
 
-      if (![readUsers].includes(currentUser)) {
-        let newReadUsers = [...[readUsers]]
-        newReadUsers.push(currentUser)
+      if (!readUsers.includes(currentUser)) {
+        // let newReadUsers = [...[readUsers]]
+        readUsers.push(currentUser)
       }
 
       console.log("here")
