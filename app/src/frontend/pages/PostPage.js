@@ -3,7 +3,10 @@ import Header from "./Header"
 import axios from "axios"
 import "../styles/Posts.scss"
 import { useState, useEffect } from "react"
-// import { faLinesLeaning } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faEye } from "@fortawesome/free-solid-svg-icons"
+
+const faEyeIcon = <FontAwesomeIcon icon={faEye} />
 
 function PostPage({ isMobile }) {
   // grab the token from local storage
@@ -102,7 +105,7 @@ function PostPage({ isMobile }) {
             }
           })()}
           <div className="posts__date">{postDate}</div>
-          {hasUserRead ? <div>Read</div> : <></>}
+          {hasUserRead ? <div>{faEyeIcon}</div> : <></>}
         </section>
       </div>
     </>
