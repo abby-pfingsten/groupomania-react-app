@@ -104,8 +104,14 @@ function PostPage({ isMobile }) {
                 return null
             }
           })()}
-          <div className="posts__date">{postDate}</div>
-          {hasUserRead ? <div>{faEyeIcon}</div> : <></>}
+          <div className="posts__date-read">
+            <div className="posts__date">{postDate}</div>
+            {hasUserRead ? (
+              <div className="posts__read">{faEyeIcon}</div>
+            ) : (
+              <></>
+            )}
+          </div>
         </section>
       </div>
     </>
