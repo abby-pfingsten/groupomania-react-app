@@ -87,12 +87,8 @@ exports.markPostAsRead = (req, res, next) => {
 
       let readUsers = []
 
-      if (JSON.parse(readPosts.usersRead) || readPosts.usersRead) {
-        if (JSON.parse(readPosts.usersRead)) {
-          readUsers.push(JSON.parse(readPosts.usersRead))
-        } else {
-          readUsers.push(readPosts.usersRead)
-        }
+      if (JSON.parse(readPosts.usersRead)) {
+        readUsers.push(JSON.parse(readPosts.usersRead))
       }
       // const readUsers = !!JSON.parse(readPosts.usersRead)
       //   ? JSON.parse(readPosts.usersRead)

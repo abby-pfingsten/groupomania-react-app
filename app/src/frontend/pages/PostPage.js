@@ -3,11 +3,13 @@ import Header from "./Header"
 import axios from "axios"
 import "../styles/Posts.scss"
 import { useState, useEffect } from "react"
+import { faLinesLeaning } from "@fortawesome/free-solid-svg-icons"
 
 function PostPage({ isMobile }) {
   // grab the token from local storage
   const userInfo = localStorage.getItem("userInfo")
   const token = JSON.parse(userInfo)[["token"]]
+  const userId = JSON.parse(userInfo)[["userId"]]
 
   // grab the post ID from the URl
   const postId = window.location.pathname.slice(1)
@@ -24,6 +26,7 @@ function PostPage({ isMobile }) {
     }
   }
   const [mediaType, setMediaType] = useState("")
+  const [hasUserRead, setHasUsersRead] = useState(false)
 
   useEffect(() => {
     function getOnePost() {
@@ -36,9 +39,20 @@ function PostPage({ isMobile }) {
         .then((response) => {
           console.log("Successfully grabbed one post")
           setSingleUserPost(response.data)
+          console.log(typeof response.data.usersRead)
+          console.log(response.data.usersRead)
+
+          let exists = Object.values(response.data.usersRead).includes(userId)
+
+          console.log(exists)
+          if (exists) {
+            setHasUsersRead(true)
+            console.log("in if")
+          } else {
+            console.log("other if")
+          }
 
           getFileExtension(response.data.media)
-          console.log(mediaType)
         })
         .catch((error) => console.log(error))
     }
@@ -47,7 +61,6 @@ function PostPage({ isMobile }) {
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
-  console.log(postDate)
 
   return (
     <>
