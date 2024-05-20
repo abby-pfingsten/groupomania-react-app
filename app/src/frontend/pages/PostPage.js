@@ -23,6 +23,7 @@ function PostPage({ isMobile }) {
 
   // function to get the file extension
   function getFileExtension(filename) {
+    console.log("in file extension func")
     if (filename) {
       console.log(filename)
       const extension = filename.split(".").pop()
@@ -44,8 +45,7 @@ function PostPage({ isMobile }) {
         .then((response) => {
           console.log("Successfully grabbed one post")
           setSingleUserPost(response.data)
-          // console.log(typeof response.data.usersRead)
-          // console.log(response.data.usersRead)
+          console.log(response.data)
 
           // checks to see if the userId is inside
           // object
@@ -55,14 +55,13 @@ function PostPage({ isMobile }) {
           if (exists) {
             setHasUsersRead(true)
           }
-
-          console.log("response data", response.data.media)
+          console.log("file extension func")
           getFileExtension(response.data.media)
         })
         .catch((error) => console.log(error, "here error"))
     }
     getOnePost()
-  }, [token, postId])
+  }, [postId])
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
@@ -104,7 +103,8 @@ function PostPage({ isMobile }) {
                 )
 
               default:
-                return null
+                // return
+                return <div>{singleUserPost.media}</div>
             }
           })()}
           <div className="posts__date-read">
