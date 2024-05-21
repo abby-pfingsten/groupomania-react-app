@@ -61,3 +61,24 @@ exports.login = (req, res, next) => {
       })
     })
 }
+
+exports.getOneUser = (req, res, next) => {
+  User.findByPk(req.params.userId)
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user)
+      } else {
+        res.status(404).json({
+          error: "Post not found",
+        })
+      }
+      console.log("Found one user")
+    })
+    .catch((error) => {
+      console.log(error)
+
+      res.status(404).json({
+        error: error.message,
+      })
+    })
+}
