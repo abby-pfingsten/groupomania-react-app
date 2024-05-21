@@ -74,8 +74,6 @@ function Home({ isMobile }) {
             <section className="posts">
               <h2 className="posts__title">{post.title}</h2>
               <p className="posts__body">{post.body}</p>
-              {/* TODO: put timestamp of created at */}
-              {/* <div className="posts__media">{post.media}</div> */}
             </section>
           </Link>
         ))}
