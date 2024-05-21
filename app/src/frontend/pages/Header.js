@@ -17,9 +17,13 @@ function Header({ isMobile, isModalOpen, setIsModalOpen }) {
   const handleClick = () => {
     setMenuOpen(!menuOpen)
   }
-
   const closeMobileMenu = () => {
     setMenuOpen(false)
+  }
+
+  // handle logout
+  const handleLogout = () => {
+    localStorage.clear()
   }
 
   return (
@@ -62,7 +66,7 @@ function Header({ isMobile, isModalOpen, setIsModalOpen }) {
                 </Link>
               </li>
               <li className="nav_menu__links">
-                <Link to="/" onClick={closeMobileMenu}>
+                <Link to="/auth/login" onClick={handleLogout}>
                   Logout
                 </Link>
               </li>
