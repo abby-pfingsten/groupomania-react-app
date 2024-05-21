@@ -40,7 +40,7 @@ function Header({ isMobile }) {
 
         {menuOpen ? (
           <>
-            <ul className="nav_menu__items menu open">
+            <ul className="nav_menu__items open">
               <li className="nav_menu__links">
                 <Link to="/" onClick={closeMobileMenu}>
                   Home

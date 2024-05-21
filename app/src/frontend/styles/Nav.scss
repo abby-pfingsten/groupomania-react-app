@@ -33,40 +33,35 @@
   z-index: 1002; /* Ensure it stays on top of the menu */
 
   &__items {
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-end;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(183, 75, 75, 0.9); /* Semi-transparent background */
+    color: white;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    & .open {
+      opacity: 1;
+      left: 0; /* Slide in to the left when menu is open */
+      pointer-events: auto;
+    }
   }
   &__links a {
     text-decoration: none;
   }
-}
-
-.menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(183, 75, 75, 0.9); /* Semi-transparent background */
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.menu.open {
-  opacity: 1;
-  left: 0; /* Slide in to the left when menu is open */
-
-  pointer-events: auto;
 }
 
 // keeps the logo hidden while the menu is open
