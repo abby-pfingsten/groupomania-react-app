@@ -7,19 +7,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
 function Header({ isMobile }) {
-  const [click, setClick] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   /* Font Awesome */
   const faBarsElement = <FontAwesomeIcon icon={faBars} />
   const faXElement = <FontAwesomeIcon icon={faX} />
 
-  // // set click to opposite
+  // // set menuOpen to opposite
   const handleClick = () => {
-    setClick(!click)
+    setMenuOpen(!menuOpen)
   }
 
   const closeMobileMenu = () => {
-    setClick(false)
+    setMenuOpen(false)
   }
 
   return (
@@ -34,15 +34,13 @@ function Header({ isMobile }) {
             ></img>
           </Link>
           <div className="nav_menu" onClick={handleClick}>
-            {/* <Link to="/profile"> */}
-            {click ? faXElement : faBarsElement}
-            {/* </Link> */}
+            {menuOpen ? faXElement : faBarsElement}
           </div>
         </div>
 
-        {click ? (
+        {menuOpen ? (
           <>
-            <ul className="nav_menu__items">
+            <ul className="nav_menu__items menu open">
               <li className="nav_menu__links">
                 <Link to="/" onClick={closeMobileMenu}>
                   Home
