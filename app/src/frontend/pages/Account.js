@@ -22,20 +22,23 @@ const Account = ({ isMobile }) => {
   useEffect(() => {
     function getOneUser() {
       axios
-        .get("http://localhost:3000/api/posts/" + userId, {
+        .get("http://localhost:3000/api/auth/" + userId, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         })
         .then((response) => {
           console.log("Successfully grabbed user information")
+
           setUserEmail(response.data.email)
-          setUserEmail(response.data.createdAt)
+          setUserCreation(response.data.createdAt)
         })
         .catch((error) => console.log(error))
     }
     getOneUser()
   }, [token, userId])
+
+  const accountDate = new Date(userCreation).toUTCString()
 
   return (
     <>
@@ -48,10 +51,10 @@ const Account = ({ isMobile }) => {
               <strong>Name:</strong> {userName}
             </p>
             <p>
-              <strong>Email:</strong> johndoe@example.com
+              <strong>Email:</strong> {userEmail}
             </p>
             <p>
-              <strong>Member since:</strong> January 2021
+              <strong>Member since:</strong> {accountDate}
             </p>
           </div>
           <button

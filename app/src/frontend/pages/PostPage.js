@@ -47,7 +47,6 @@ function PostPage({ isMobile }) {
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
-  console.log(postDate)
 
   return (
     <>
