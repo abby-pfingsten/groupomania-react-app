@@ -1,39 +1,36 @@
 /* AccountPage.scss */
 @import "./utils/mixins.scss";
+@import "./utils/variables.scss";
 
 .account-page {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f9f9f9;
-}
-
-.account-page__container {
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
-  text-align: center;
-}
-
-.account-page__info {
-  margin-bottom: 20px;
-}
-
-.account-page__delete-button {
-  background-color: #ff6347;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s;
-}
-
-.account-page__delete-button:hover {
-  background-color: #ff4500;
+  background-color: white;
+  &__container {
+    background-color: $dark-red-color;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+  }
+  &__info {
+    margin-bottom: 20px;
+  }
+  &__delete-button {
+    background-color: #ff6347;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: #ff4500;
+    }
+  }
 }

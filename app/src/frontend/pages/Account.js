@@ -10,12 +10,6 @@ const Account = () => {
     // Implement delete account logic here
     alert("Account deletion logic goes here.")
   }
-  // return (
-  //   <div>
-  //     <Header />
-  //     {userName}
-  //   </div>
-  // )
 
   return (
     <>
