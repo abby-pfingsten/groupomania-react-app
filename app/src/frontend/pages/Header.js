@@ -6,7 +6,7 @@ import { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBars, faX } from "@fortawesome/free-solid-svg-icons"
 
-function Header({ isMobile }) {
+function Header({ isMobile, isModalOpen, setIsModalOpen }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   /* Font Awesome */
