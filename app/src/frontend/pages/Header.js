@@ -28,7 +28,7 @@ function Header({ isMobile }) {
         <div className={"nav-layout"}>
           <Link to="/">
             <img
-              className="nav-layout__logo"
+              className={`nav-layout__logo ${menuOpen ? 'hidden': ''}`}
               src={isMobile ? iconLogo : textLogo}
               alt="Groupomania Logo"
             ></img>

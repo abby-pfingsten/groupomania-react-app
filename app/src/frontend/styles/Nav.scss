@@ -10,6 +10,8 @@
   padding-right: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
+  position: relative;
+  z-index: 1001;
   &__logo {
     width: 20%;
     @include desktop-only {
@@ -28,6 +30,8 @@
 .nav_menu {
   color: $dark-red-color;
   font-size: 30px;
+  z-index: 1002; /* Ensure it stays on top of the menu */
+
   &__items {
     display: flex;
     flex-direction: column;
@@ -60,5 +64,13 @@
 
 .menu.open {
   opacity: 1;
+  left: 0; /* Slide in to the left when menu is open */
+
   pointer-events: auto;
+}
+
+// keeps the logo hidden while the menu is open
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
