@@ -37,6 +37,9 @@
     flex-direction: column;
     align-items: flex-end;
   }
+  &__links {
+    cursor: pointer;
+  }
   &__links:hover {
     color: #ff6347; /* Add a hover effect for better interactivity */
   }
@@ -53,7 +56,6 @@
   position: fixed;
   top: 0;
   left: 0;
-  // right: -33.33%;
   height: 100%;
   width: 100%;
   background-color: rgba(183, 75, 75, 0.9); /* Semi-transparent background */
