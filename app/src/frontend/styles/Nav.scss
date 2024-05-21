@@ -33,39 +33,58 @@
   z-index: 1002; /* Ensure it stays on top of the menu */
 
   &__items {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: flex-end;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(183, 75, 75, 0.9); /* Semi-transparent background */
-    color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    & .open {
-      opacity: 1;
-      left: 0; /* Slide in to the left when menu is open */
-      pointer-events: auto;
-    }
+    align-items: flex-end;
+  }
+  &__links:hover {
+    color: #ff6347; /* Add a hover effect for better interactivity */
   }
   &__links a {
+    color: white;
     text-decoration: none;
   }
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  // right: -33.33%;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(183, 75, 75, 0.9); /* Semi-transparent background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: right 1s ease, opacity 0.3s ease-in-out;
+  @include desktop-only {
+    left: 70%; /* Ensure the menu is positioned correctly */
+    width: 30%; /* Make the menu take up 30% of the screen width */
+  }
+}
+
+.menu.open {
+  opacity: 1;
+  transform: scale(1);
+
+  pointer-events: auto;
 }
 
 // keeps the logo hidden while the menu is open
 .hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+.white-color {
+  color: white;
 }

@@ -28,19 +28,22 @@ function Header({ isMobile }) {
         <div className={"nav-layout"}>
           <Link to="/">
             <img
-              className={`nav-layout__logo ${menuOpen ? 'hidden': ''}`}
+              className={`nav-layout__logo ${menuOpen ? "hidden" : ""}`}
               src={isMobile ? iconLogo : textLogo}
               alt="Groupomania Logo"
             ></img>
           </Link>
-          <div className="nav_menu" onClick={handleClick}>
+          <div
+            className={`nav_menu ${menuOpen ? "white-color" : ""}`}
+            onClick={handleClick}
+          >
             {menuOpen ? faXElement : faBarsElement}
           </div>
         </div>
 
         {menuOpen ? (
           <>
-            <ul className="nav_menu__items open">
+            <ul className="nav_menu__items menu open">
               <li className="nav_menu__links">
                 <Link to="/" onClick={closeMobileMenu}>
                   Home
