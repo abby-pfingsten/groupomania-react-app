@@ -12,7 +12,19 @@ const Account = ({ isMobile }) => {
   let token = JSON.parse(userObject)[["token"]]
 
   const handleDeleteAccount = () => {
-    // Implement delete account logic here
+    // function deleteUser() {
+    //   axios
+    //     .delete("http://localhost:3000/api/auth/" + userId, {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     })
+    //     .then((response) => {
+    //       console.log("Successfully deleted user")
+    //     })
+    //     .catch((error) => console.log(error))
+    // }
+    // deleteUser()
     alert("Account deletion logic goes here.")
   }
 
