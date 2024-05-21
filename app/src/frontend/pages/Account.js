@@ -1,7 +1,7 @@
 import Header from "./Header"
 import "../styles/Account.scss"
 
-const Account = () => {
+const Account = ({ isMobile }) => {
   // grab the name of the user
   let userObject = localStorage.getItem("userInfo")
   let userName = JSON.parse(userObject)[["name"]]
@@ -13,7 +13,7 @@ const Account = () => {
 
   return (
     <>
-      <Header/>
+      <Header isMobile={isMobile} />
       <div className="account-page">
         <div className="account-page__container">
           <h1>Account Details</h1>

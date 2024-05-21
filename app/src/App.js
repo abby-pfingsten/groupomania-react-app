@@ -2,10 +2,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from "./frontend/pages/Login"
 import Signup from "./frontend/pages/Signup"
 import Home from "./frontend/pages/Home"
+import Account from "./frontend/pages/Account"
 import Profile from "./frontend/pages/Account"
 import { Outlet, Navigate } from "react-router-dom"
 import { useState } from "react"
 import PostPage from "./frontend/pages/PostPage"
+import AccountHeader from "./frontend/pages/AccountHeader"
 
 const PrivateRoutes = () => {
   const [token, setToken] = useState(() => {
@@ -52,7 +54,11 @@ function App() {
             element={<PostPage isMobile={isMobile} />}
           />
         </Route>
-        <Route exact path="/profile" element={<Profile />} />
+        <Route
+          exact
+          path="/account"
+          element={<Account isMobile={isMobile} />}
+        />
       </Routes>
     </BrowserRouter>
   )

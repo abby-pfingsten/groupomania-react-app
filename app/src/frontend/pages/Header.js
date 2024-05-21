@@ -61,7 +61,7 @@ function Header({ isMobile, isModalOpen, setIsModalOpen }) {
                 </Link>
               </li>
               <li className="nav_menu__links">
-                <Link to="/profile" onClick={closeMobileMenu}>
+                <Link to="/account" onClick={closeMobileMenu}>
                   Account
                 </Link>
               </li>
