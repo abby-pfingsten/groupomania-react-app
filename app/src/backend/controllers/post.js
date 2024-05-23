@@ -77,107 +77,38 @@ exports.getOnePost = (req, res, next) => {
 
 exports.markPostAsRead = (req, res, next) => {
   console.log("this is a breakpoint")
-  // const currentUser = req.body.userId
   Post.findByPk(req.params.postid)
-    // Post.findOne({ where: { id: parseInt(req.params.postid) } })
     .then((post) => {
       const currentUser = req.body.userId
 
       let readUsers = post.usersRead ?? []
 
       console.log(readUsers)
-      // let readUsers = [...JSON.parse(post.usersRead)]
 
       if (!readUsers.includes(currentUser)) {
-        // let newReadUsers = [...[readUsers]]
-        readUsers.push(currentUser)
+        readUsers = [...readUsers, currentUser]
+        // readUsers.push(currentUser)
       }
 
       console.log("here")
       console.log(post)
 
-      post.usersRead = readUsers
-      post.save()
-
-      // let currentPost = new Post({ id: req.params.postid })
-
-      // currentPost = {
-      //   id: req.params.postid,
-      //   name: req.p
-      // }
+      // post.usersRead = readUsers
+      post.update({ usersRead: readUsers }).then((post) => {
+        post
+          .save()
+          .then((post) => {
+            res.status(200).json(post)
+            console.log("Successfully added read user to database")
+          })
+          .catch((error) => {
+            res.status(500).json(error.message)
+            console.log(error.message)
+          })
+      })
     })
     .catch((error) => {
       console.log(error)
       console.log("error here")
     })
-
-  // if (req.body.like === 1) {
-  //   // you only want a user to be able to like
-  //   if (!readPosts.usersLiked.includes(requestUserId)) {
-  //     ;({ dislikedUsers, dislikeCount, likedUsers, likeCount } =
-  //       resetLikeCount(
-  //         dislikedUsers,
-  //         requestUserId,
-  //         dislikeCount,
-  //         likedUsers,
-  //         likeCount
-  //       ))
-
-  //     likeCount += 1
-  //     likedUsers.push(requestUserId)
-  //   }
-  // } else if (req.body.like === -1) {
-  //   if (!readPosts.usersDisliked.includes(requestUserId)) {
-  //     ;({ dislikedUsers, dislikeCount, likedUsers, likeCount } =
-  //       resetLikeCount(
-  //         dislikedUsers,
-  //         requestUserId,
-  //         dislikeCount,
-  //         likedUsers,
-  //         likeCount
-  //       ))
-
-  //     dislikeCount += 1
-  //     dislikedUsers.push(requestUserId)
-  //   }
-  // } else {
-  //   // you only want this chunk to do anything if the
-  //   // user is the same aka they have already liked
-  //   // or disliked something
-  //   ;({ dislikedUsers, dislikeCount, likedUsers, likeCount } = resetLikeCount(
-  //     dislikedUsers,
-  //     requestUserId,
-  //     dislikeCount,
-  //     likedUsers,
-  //     likeCount
-  //   ))
-  // }
-
-  // sauce = {
-  //   _id: req.params.id,
-  //   userId: readPosts.userId,
-  //   name: readPosts.name,
-  //   manufacturer: readPosts.manufacturer,
-  //   description: readPosts.description,
-  //   mainPepper: readPosts.mainPepper,
-  //   imageUrl: readPosts.imageUrl,
-  //   heat: readPosts.heat,
-  //   likes: (readPosts.likes += likeCount),
-  //   dislikes: (readPosts.dislikes += dislikeCount),
-  //   usersLiked: likedUsers,
-  //   usersDisliked: dislikedUsers,
-  // }
-  // }
-  // Post.updateOne({ _id: req.params.id }, sauce)
-  //   .then(() => {
-  //     res.status(201).json({
-  //       message: "Sauce likes updated successfully!",
-  //     })
-  //   })
-  //   .catch((error) => {
-  //     res.status(400).json({
-  //       error: error,
-  //     })
-  //   })
-  // })
 }
