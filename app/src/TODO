@@ -3,6 +3,7 @@
 - reconcile differences between two branches were images/vids showing and not
     done
 - have the modal pop up when you click create account
+    maybe
 - delete account not working because of PK
     solution: make soft delete -- add a new column to user db and when login only login active ones
 - adding more than two instances of the read user

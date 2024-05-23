@@ -76,24 +76,16 @@ exports.getOnePost = (req, res, next) => {
 }
 
 exports.markPostAsRead = (req, res, next) => {
-  console.log("this is a breakpoint")
   Post.findByPk(req.params.postid)
     .then((post) => {
+
       const currentUser = req.body.userId
 
       let readUsers = post.usersRead ?? []
 
-      console.log(readUsers)
-
       if (!readUsers.includes(currentUser)) {
         readUsers = [...readUsers, currentUser]
-        // readUsers.push(currentUser)
       }
-
-      console.log("here")
-      console.log(post)
-
-      // post.usersRead = readUsers
       post.update({ usersRead: readUsers }).then((post) => {
         post
           .save()
@@ -108,7 +100,7 @@ exports.markPostAsRead = (req, res, next) => {
       })
     })
     .catch((error) => {
-      console.log(error)
+      console.log(error.message)
       console.log("error here")
     })
 }

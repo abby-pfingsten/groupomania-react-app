@@ -23,17 +23,15 @@ function PostPage({ isMobile }) {
 
   // function to get the file extension
   function getFileExtension(filename) {
-    console.log("in file extension func")
     if (filename) {
-      console.log(filename)
       const extension = filename.split(".").pop()
-      console.log("extension", extension)
       setMediaType(extension)
     }
   }
   const [mediaType, setMediaType] = useState("")
   const [hasUserRead, setHasUsersRead] = useState(false)
 
+  // get one post when you click on it
   useEffect(() => {
     function getOnePost() {
       axios
@@ -49,20 +47,28 @@ function PostPage({ isMobile }) {
 
           // checks to see if the userId is inside
           // object
-          
-          let exists = Object.values(response.data.usersRead ?? []).includes(userId)
-          console.log(exists)
-          // console.log(exists)
+          let exists = Object.values(response.data.usersRead ?? []).includes(
+            userId
+          )
           if (exists) {
             setHasUsersRead(true)
           }
-          console.log("file extension func")
           getFileExtension(response.data.media)
         })
         .catch((error) => console.log(error, "here error"))
     }
     getOnePost()
   }, [postId])
+
+  useEffect(() => {
+    function markPostAsRead() {
+      axios.get("http://localhost:3000/api/posts/" + postId + "/read", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    }
+  })
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
