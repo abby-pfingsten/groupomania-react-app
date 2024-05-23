@@ -49,8 +49,9 @@ function PostPage({ isMobile }) {
 
           // checks to see if the userId is inside
           // object
-          let exists = Object.values(response.data.usersRead).includes(userId)
-
+          
+          let exists = Object.values(response.data.usersRead ?? []).includes(userId)
+          console.log(exists)
           // console.log(exists)
           if (exists) {
             setHasUsersRead(true)

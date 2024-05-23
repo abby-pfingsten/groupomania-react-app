@@ -1,0 +1,10 @@
+- don't allow for clicking when side menu active
+    solution: put z index way higher
+- reconcile differences between two branches were images/vids showing and not
+    done
+- have the modal pop up when you click create account
+- delete account not working because of PK
+    solution: make soft delete -- add a new column to user db and when login only login active ones
+- adding more than two instances of the read user
+    solution: working, make axios and put on frontend
+- how to make fontawesome accessible
