@@ -85,21 +85,21 @@ exports.getOneUser = (req, res, next) => {
 
 exports.deleteOneUser = (req, res, next) => {
   User.destroy({ where: { id: req.params.userId } })
-    // .then((user) => {
-    //   if (user) {
-    //     res.status(200).json(user)
-    //   } else {
-    //     res.status(404).json({
-    //       error: "Post not found",
-    //     })
-    //   }
-    //   console.log("Found one user")
-    // })
-    // .catch((error) => {
-    //   console.log(error)
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user)
+      } else {
+        res.status(404).json({
+          error: "Post not found",
+        })
+      }
+      console.log("Found one user")
+    })
+    .catch((error) => {
+      console.log(error)
 
-    //   res.status(404).json({
-    //     error: error.message,
-    //   })
-    // })
+      res.status(404).json({
+        error: error.message,
+      })
+    })
 }
