@@ -45,8 +45,8 @@ function PostPage({ isMobile }) {
           setSingleUserPost(response.data)
           console.log(response.data)
 
-          // checks to see if the userId is inside
-          // object
+          // check to see if the user has read the post
+          // when you grab the post
           let exists = Object.values(response.data.usersRead ?? []).includes(
             userId
           )
@@ -62,13 +62,25 @@ function PostPage({ isMobile }) {
 
   useEffect(() => {
     function markPostAsRead() {
-      axios.get("http://localhost:3000/api/posts/" + postId + "/read", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
+      axios
+        .post("http://localhost:3000/api/posts/" + postId + "/read", {
+          userId,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log(
+            "Successfully marked user",
+            userId,
+            "as having read post",
+            postId
+          )
+          setHasUsersRead(true)
+        })
+        .catch((error) => console.log(error.message))
     }
-  })
+  }, [postId])
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()

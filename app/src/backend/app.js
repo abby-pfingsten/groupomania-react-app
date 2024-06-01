@@ -2,6 +2,7 @@
 // mysql % cd bin
 // bin % ls
 // bin % ./mysql -u root -p
+// ./mysql -u root -p
 const express = require("express")
 const path = require("path")
 
