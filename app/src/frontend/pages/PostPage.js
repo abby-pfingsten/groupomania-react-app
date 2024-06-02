@@ -80,7 +80,8 @@ function PostPage({ isMobile }) {
         })
         .catch((error) => console.log(error.message))
     }
-  }, [postId])
+    markPostAsRead()
+  }, [postId, token, userId])
 
   // formatting the date
   const postDate = new Date(singleUserPost.createdAt).toUTCString()
