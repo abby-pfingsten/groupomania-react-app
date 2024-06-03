@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-function SignupLogin({ type }) {
+function SignupLogin({ type, accountActive, setAccountActive }) {
   const navigate = useNavigate()
 
   // handle the form submission
@@ -47,7 +47,7 @@ function SignupLogin({ type }) {
   }
   const [name, setName] = useState({})
   const [email, setEmail] = useState({})
-  const [accountActive, setAccountActive] = useState("Yes")
+  // const [accountActive, setAccountActive] = useState("Yes")
   const [password, setPassword] = useState({})
   const [emailError, setEmailError] = useState(false)
   const [loginError, setLoginError] = useState(false)
