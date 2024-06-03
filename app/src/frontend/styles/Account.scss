@@ -1,0 +1,41 @@
+/* AccountPage.scss */
+@import "./utils/mixins.scss";
+@import "./utils/variables.scss";
+
+.account-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: white;
+  &__container {
+    background-color: lighten($dark-red-color, 25%);
+    padding: 40px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    transition: box-shadow ease 1s;
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    }
+  }
+  &__info {
+    margin-bottom: 20px;
+  }
+  &__delete-button {
+    background-color: $dark-red-color;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: darken($dark-red-color, 10%);
+    }
+  }
+}

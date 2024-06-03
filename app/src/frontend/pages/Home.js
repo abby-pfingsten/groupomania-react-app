@@ -53,7 +53,11 @@ function Home({ isMobile }) {
 
   return (
     <>
-      <Header isMobile={isMobile} />
+      <Header
+        isMobile={isMobile}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
       <div className="home">
         <h1>Welcome, {userName} </h1>
         <Button
