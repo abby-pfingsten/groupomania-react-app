@@ -55,11 +55,11 @@ function Header({ isMobile, isModalOpen, setIsModalOpen }) {
                   Home
                 </Link>
               </li>
-              <li className="nav_menu__links">
-                <Link to="/" onClick={closeMobileMenu}>
+              {/* <li className="nav_menu__links"> */}
+              {/* <Link to="/" onClick={closeMobileMenu}>
                   Create a Post
-                </Link>
-              </li>
+                </Link> */}
+              {/* </li> */}
               <li className="nav_menu__links">
                 <Link to="/account" onClick={closeMobileMenu}>
                   Account
