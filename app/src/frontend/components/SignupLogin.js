@@ -31,8 +31,10 @@ function SignupLogin({ type }) {
           name,
           email,
           password,
+          accountActive,
         })
         .then((response) => {
+          setAccountActive("Yes")
           navigate("/")
         })
         .catch((error) => {
@@ -45,6 +47,7 @@ function SignupLogin({ type }) {
   }
   const [name, setName] = useState({})
   const [email, setEmail] = useState({})
+  const [accountActive, setAccountActive] = useState("Yes")
   const [password, setPassword] = useState({})
   const [emailError, setEmailError] = useState(false)
   const [loginError, setLoginError] = useState(false)

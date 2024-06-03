@@ -8,6 +8,7 @@ exports.signup = (req, res, next) => {
       name: req.body.name,
       email: req.body.email,
       password: hash,
+      accountActive: req.body.accountActive,
     })
     user
       .save()
