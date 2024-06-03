@@ -1,0 +1,92 @@
+@import "./utils/mixins";
+@import "./utils/variables.scss";
+.nav-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style: none;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1001;
+  &__logo {
+    width: 20%;
+    @include desktop-only {
+      width: 50%;
+    }
+  }
+  @include desktop-only {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  &__menu {
+    color: $dark-red-color;
+    font-size: 30px;
+  }
+}
+.nav_menu {
+  color: $dark-red-color;
+  font-size: 30px;
+  z-index: 1002; /* Ensure it stays on top of the menu */
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  &__links {
+    cursor: pointer;
+  }
+  &__links:hover {
+    color: #ff6347; /* Add a hover effect for better interactivity */
+  }
+  &__links a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(183, 75, 75, 0.9); /* Semi-transparent background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: right 1s ease, opacity 0.3s ease-in-out;
+  @include desktop-only {
+    left: 70%; /* Ensure the menu is positioned correctly */
+    width: 30%; /* Make the menu take up 30% of the screen width */
+  }
+}
+
+.menu.open {
+  opacity: 1;
+  transform: scale(1);
+
+  pointer-events: auto;
+}
+
+// keeps the logo hidden while the menu is open
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.white-color {
+  color: white;
+}

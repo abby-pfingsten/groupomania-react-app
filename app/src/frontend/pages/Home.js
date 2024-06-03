@@ -1,16 +1,95 @@
-import "../styles/sass/_home.scss"
+import "../styles/Home.scss"
 import Header from "./Header"
+import axios from "axios"
+import "../styles/Posts.scss"
+import { Link } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons"
+import { useState, useEffect } from "react"
+import { Button } from "@mui/base"
+import Modal from "../components/Modal"
 
-function Home() {
-  //fetch some data and put it into a state variable
+function Home({ isMobile }) {
+  // TODO ----
+  // have to display something if no posts
+  const faCirclePlusElement = <FontAwesomeIcon icon={faCirclePlus} />
+
+  // determine if the modal is open or closed
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  // grab the name of the user
+  let userObject = localStorage.getItem("userInfo")
+  let userName = JSON.parse(userObject)[["name"]]
+
+  const userInfo = localStorage.getItem("userInfo")
+  const token = JSON.parse(userInfo)[["token"]]
+
+  // get all posts whenever token changes
+  const [userPosts, setUserPosts] = useState([])
+
+  const [successfulPost, setSuccessfulPost] = useState(false)
+  const toggleSuccess = () => {
+    setSuccessfulPost(!successfulPost)
+  }
+  useEffect(() => {
+    function getAllPosts() {
+      axios
+        .get("http://localhost:3000/api/posts", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log("Successfully grabbed all posts")
+          setUserPosts(response.data)
+        })
+        .catch((error) => console.log(error))
+    }
+    getAllPosts()
+  }, [token, successfulPost])
+
   return (
     <>
+      <Header
+        isMobile={isMobile}
+        isModalOpen={isModalOpen}
+        setIsModalOpen={setIsModalOpen}
+      />
       <div className="home">
-        <Header />
-
-        <h1>Home Page</h1>
-        {/* {faEnvelope} */}
+        <h1>Welcome, {userName} </h1>
+        <Button
+          variant="outlined"
+          className="home__button"
+          onClick={() => setIsModalOpen(true)}
+        >
+          {isMobile ? faCirclePlusElement : "Create A Post"}
+        </Button>
       </div>
+      <div className="posts-div">
+        {userPosts.map((post, index) => (
+          <Link
+            to={`/${post.id}`}
+            key={`${post.title}-${index}`}
+            className="posts-link"
+          >
+            <section className="posts">
+              <h2 className="posts__title">{post.title}</h2>
+              <p className="posts__body">{post.body}</p>
+            </section>
+          </Link>
+        ))}
+      </div>
+      <section>
+        <Modal
+          isModalOpen={isModalOpen}
+          onClose={closeModal}
+          toggleSuccess={toggleSuccess}
+        />
+      </section>
+      ;
     </>
   )
 }

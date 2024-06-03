@@ -13,7 +13,6 @@ exports.signup = (req, res, next) => {
       .save()
       .then(() => {
         res.status(201).json({
-          name: req.body.name,
           message: "User added successfully!",
         })
       })
@@ -26,7 +25,7 @@ exports.signup = (req, res, next) => {
 }
 
 exports.login = (req, res, next) => {
-  User.findOne({ email: req.body.email })
+  User.findOne({ where: { email: req.body.email } })
     .then((user) => {
       if (!user) {
         return res.status(401).json({
@@ -41,12 +40,13 @@ exports.login = (req, res, next) => {
               error: new Error("Incorrect password!"),
             })
           }
-          const token = jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+          const token = jwt.sign({ userId: user.id }, "RANDOM_TOKEN_SECRET", {
             expiresIn: "24h",
           })
           res.status(200).json({
-            userId: user._id,
+            userId: user.id,
             token: token,
+            name: user.name,
           })
         })
         .catch((error) => {
@@ -58,6 +58,48 @@ exports.login = (req, res, next) => {
     .catch((error) => {
       res.status(500).json({
         error: error,
+      })
+    })
+}
+
+exports.getOneUser = (req, res, next) => {
+  User.findByPk(req.params.userId)
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user)
+      } else {
+        res.status(404).json({
+          error: "Post not found",
+        })
+      }
+      console.log("Found one user")
+    })
+    .catch((error) => {
+      console.log(error)
+
+      res.status(404).json({
+        error: error.message,
+      })
+    })
+}
+
+exports.deleteOneUser = (req, res, next) => {
+  User.destroy({ where: { id: req.params.userId } })
+    .then((user) => {
+      if (user) {
+        res.status(200).json(user)
+      } else {
+        res.status(404).json({
+          error: "Post not found",
+        })
+      }
+      console.log("Found one user")
+    })
+    .catch((error) => {
+      console.log(error)
+
+      res.status(404).json({
+        error: error.message,
       })
     })
 }

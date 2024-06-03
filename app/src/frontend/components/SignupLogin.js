@@ -11,13 +11,10 @@ function SignupLogin({ type }) {
 
     if (type === "Login") {
       axios
-        .post("http://localhost:3001/api/auth/login", { email, password })
+        .post("http://localhost:3000/api/auth/login", { email, password })
         .then((response) => {
           const token = response[["data"]]
-          localStorage.setItem("userToken", JSON.stringify(token))
-
-          // TODO --find name in database to display it in home screen
-          // based on the email
+          localStorage.setItem("userInfo", JSON.stringify(token))
 
           // if all is successful, then navigate to the homepage
           navigate("/")
@@ -30,16 +27,12 @@ function SignupLogin({ type }) {
         })
     } else {
       axios
-        .post("http://localhost:3001/api/auth/signup", {
+        .post("http://localhost:3000/api/auth/signup", {
           name,
           email,
           password,
         })
         .then((response) => {
-          const responseData = response[["data"]]
-          // grab the name to display it to the user on the homepage
-          localStorage.setItem("userName", JSON.stringify(responseData.name))
-          // if all goes well, navigate to the homepage
           navigate("/")
         })
         .catch((error) => {

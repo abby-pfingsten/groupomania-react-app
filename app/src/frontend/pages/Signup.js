@@ -1,9 +1,9 @@
 // import textLogo from "../images/icon-left-font-monochrome-black.svg"
-import "../styles/sass/_signup.scss"
+import "../styles/AccountHeader.scss"
 import AccountHeader from "./AccountHeader"
 import SignupLogin from "../components/SignupLogin"
 
-function Signup() {
+function Signup({ isMobile }) {
   return (
     <>
       <AccountHeader />

@@ -1,12 +1,14 @@
-
 // local % cd mysql
 // mysql % cd bin
 // bin % ls
 // bin % ./mysql -u root -p
+// ./mysql -u root -p
 const express = require("express")
 const path = require("path")
 
 const userRouter = require("./routes/user")
+const postRouter = require("./routes/post")
+
 const app = express()
 require("./models")
 
@@ -26,10 +28,9 @@ app.use((req, res, next) => {
 })
 
 // // app.use("/api/stuff", stuffRoutes);
-app.use("/images", express.static(path.join(__dirname, "images")));
-app.use("/api/auth", userRouter);
-// app.use("/api/sauces", sauceRoutes);
-// app.use("/api/user", userRouter)
+app.use("/images", express.static(path.join(__dirname, "images")))
+app.use("/api/auth", userRouter)
+app.use("/api/posts", postRouter)
 
 // // need app.use for login?
-module.exports = app;
+module.exports = app

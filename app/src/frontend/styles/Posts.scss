@@ -1,0 +1,74 @@
+@import "./utils/mixins";
+@import "./utils/variables.scss";
+
+// styling for the container holding all posts
+.posts-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  margin: 10px;
+  gap: 20px;
+  @include desktop-only {
+    align-items: center;
+  }
+}
+// post link styling
+.posts-link {
+  width: 100%;
+  text-decoration: none;
+  color: black;
+  @include desktop-only {
+    width: 50%;
+  }
+}
+// styling for each individual post
+.posts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 5px;
+  border-radius: 3ch;
+  border-style: solid;
+  text-decoration: none;
+  transition: filter 2s ease;
+  transition: background-color 0.3s ease;
+  &:hover {
+    background-color: $dark-red-color;
+    border-color: $dark-red-color;
+    color: white;
+    filter: drop-shadow(10px 10px 20px rgba(36, 36, 36, 0.5));
+  }
+  &__title {
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+  &__date {
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    align-self: flex-end;
+    // padding: 10px;
+  }
+  &__image {
+    width: 100%;
+  }
+  &__video video {
+    width: 100%;
+  }
+  &__read {
+    font-size: 15px;
+  }
+  &__date-read {
+    display: flex;
+    flex-flow: row-reverse;
+    justify-content: space-between;
+    padding: 10px;
+  }
+}
+
+.modal {
+  position: absolute;
+  z-index: 99;
+  border-style: dashed;
+}
