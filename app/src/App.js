@@ -22,6 +22,7 @@ const PrivateRoutes = () => {
 function App() {
   // determine whether or not we are in a mobile view
   const [isMobile, setIsMobile] = useState(false)
+  const [accountActive, setAccountActive] = useState("Yes")
 
   const changeToMobile = () => {
     if (window.innerWidth <= 960) {
@@ -39,12 +40,24 @@ function App() {
         <Route
           exact
           path="/auth/login"
-          element={<Login isMobile={isMobile} />}
+          element={
+            <Login
+              isMobile={isMobile}
+              accountActive={accountActive}
+              setAccountActive={setAccountActive}
+            />
+          }
         />
         <Route
           exact
           path="/auth/signup"
-          element={<Signup isMobile={isMobile} />}
+          element={
+            <Signup
+              isMobile={isMobile}
+              accountActive={accountActive}
+              setAccountActive={setAccountActive}
+            />
+          }
         />
         <Route element={<PrivateRoutes />}>
           <Route exact path="/" element={<Home isMobile={isMobile} />} />
@@ -57,7 +70,13 @@ function App() {
         <Route
           exact
           path="/account"
-          element={<Account isMobile={isMobile} />}
+          element={
+            <Account
+              isMobile={isMobile}
+              accountActive={accountActive}
+              setAccountActive={setAccountActive}
+            />
+          }
         />
       </Routes>
     </BrowserRouter>

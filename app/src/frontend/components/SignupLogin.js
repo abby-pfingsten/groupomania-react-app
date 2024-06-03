@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
-function SignupLogin({ type }) {
+function SignupLogin({ type, accountActive, setAccountActive }) {
   const navigate = useNavigate()
 
   // handle the form submission
@@ -31,8 +31,10 @@ function SignupLogin({ type }) {
           name,
           email,
           password,
+          accountActive,
         })
         .then((response) => {
+          setAccountActive("Yes")
           navigate("/")
         })
         .catch((error) => {
@@ -88,7 +90,7 @@ function SignupLogin({ type }) {
         )}
         {loginError ? (
           <>
-            <div>Your email or password is incorrect</div>
+            <div>Your email or password is incorrect or your account is inactive</div>
           </>
         ) : (
           <></>

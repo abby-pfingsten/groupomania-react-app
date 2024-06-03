@@ -2,9 +2,11 @@ import Header from "./Header"
 import "../styles/Account.scss"
 import axios from "axios"
 import { useState, useEffect } from "react"
-// import { useSearchParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Account = ({ isMobile }) => {
+  const navigate = useNavigate()
+
   // grab the name of the user
   let userObject = localStorage.getItem("userInfo")
   let userName = JSON.parse(userObject)[["name"]]
@@ -12,20 +14,24 @@ const Account = ({ isMobile }) => {
   let token = JSON.parse(userObject)[["token"]]
 
   const handleDeleteAccount = () => {
-    // function deleteUser() {
-    //   axios
-    //     .delete("http://localhost:3000/api/auth/" + userId, {
-    //       headers: {
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     })
-    //     .then((response) => {
-    //       console.log("Successfully deleted user")
-    //     })
-    //     .catch((error) => console.log(error))
-    // }
-    // deleteUser()
-    alert("Account deletion logic goes here.")
+    function softDeleteUser() {
+      axios
+        .post("http://localhost:3000/api/auth/" + userId, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          console.log("Successfully soft deleted user")
+        })
+        .catch((error) => console.log(error))
+    }
+    // when we soft-delete the user we also want to
+    // navigate back to the signup page and clear
+    // the local storage
+    softDeleteUser()
+    localStorage.clear()
+    navigate("/auth/signup")
   }
 
   const [userEmail, setUserEmail] = useState("")

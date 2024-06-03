@@ -3,11 +3,15 @@ import "../styles/AccountHeader.scss"
 import AccountHeader from "./AccountHeader"
 import SignupLogin from "../components/SignupLogin"
 
-function Signup({ isMobile }) {
+function Signup({ isMobile, accountActive, setAccountActive }) {
   return (
     <>
       <AccountHeader />
-      <SignupLogin type="Signup" />
+      <SignupLogin
+        type="Signup"
+        accountActive={accountActive}
+        setAccountActive={setAccountActive}
+      />
     </>
   )
 }
