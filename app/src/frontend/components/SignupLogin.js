@@ -47,7 +47,6 @@ function SignupLogin({ type, accountActive, setAccountActive }) {
   }
   const [name, setName] = useState({})
   const [email, setEmail] = useState({})
-  // const [accountActive, setAccountActive] = useState("Yes")
   const [password, setPassword] = useState({})
   const [emailError, setEmailError] = useState(false)
   const [loginError, setLoginError] = useState(false)

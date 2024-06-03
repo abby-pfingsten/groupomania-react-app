@@ -26,7 +26,7 @@ exports.signup = (req, res, next) => {
 }
 
 exports.login = (req, res, next) => {
-  User.findOne({ where: { email: req.body.email } })
+  User.findOne({ where: { email: req.body.email, accountActive: "Yes" } })
     .then((user) => {
       if (!user) {
         return res.status(401).json({
@@ -85,16 +85,27 @@ exports.getOneUser = (req, res, next) => {
 }
 
 exports.deleteOneUser = (req, res, next) => {
-  User.destroy({ where: { id: req.params.userId } })
+  User.findByPk(req.params.userId)
     .then((user) => {
       if (user) {
-        res.status(200).json(user)
+        user
+          .update({ accountActive: "No" })
+          .then((user) => {
+            user.save().then((user) => {
+              res.status(200).json(user)
+              console.log("Successfully deleted one user")
+            })
+          })
+          .catch((error) => {
+            res.status(500).json(error.message)
+            console.log(error.message)
+          })
       } else {
         res.status(404).json({
-          error: "Post not found",
+          error: "User not found",
         })
       }
-      console.log("Found one user")
+      // console.log("Deleting one user")
     })
     .catch((error) => {
       console.log(error)
