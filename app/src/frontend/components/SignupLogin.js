@@ -90,7 +90,7 @@ function SignupLogin({ type, accountActive, setAccountActive }) {
         )}
         {loginError ? (
           <>
-            <div>Your email or password is incorrect</div>
+            <div>Your email or password is incorrect or your account is inactive</div>
           </>
         ) : (
           <></>
