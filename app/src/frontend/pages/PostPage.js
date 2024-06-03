@@ -63,12 +63,17 @@ function PostPage({ isMobile }) {
   useEffect(() => {
     function markPostAsRead() {
       axios
-        .post("http://localhost:3000/api/posts/" + postId + "/read", {
-          userId,
-          headers: {
-            Authorization: `Bearer ${token}`,
+        .post(
+          "http://localhost:3000/api/posts/" + postId + "/read",
+          {
+            userId,
           },
-        })
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then((response) => {
           console.log(
             "Successfully marked user",
