@@ -6,7 +6,13 @@ import { useState, useEffect } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faEye } from "@fortawesome/free-solid-svg-icons"
 
-const faEyeIcon = <FontAwesomeIcon icon={faEye} />
+const faEyeIcon = (
+  <FontAwesomeIcon
+    icon={faEye}
+    area-hidden="true"
+    title="Eye icon marking post as read"
+  />
+)
 
 function PostPage({ isMobile }) {
   // grab the token from local storage
