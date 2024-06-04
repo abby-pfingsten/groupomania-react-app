@@ -10,8 +10,20 @@ function Header({ isMobile, isModalOpen, setIsModalOpen }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
   /* Font Awesome */
-  const faBarsElement = <FontAwesomeIcon icon={faBars} />
-  const faXElement = <FontAwesomeIcon icon={faX} />
+  const faBarsElement = (
+    <FontAwesomeIcon
+      icon={faBars}
+      area-hidden="true"
+      title="Hamburger icon to open the menu"
+    />
+  )
+  const faXElement = (
+    <FontAwesomeIcon
+      icon={faX}
+      area-hidden="true"
+      title="X to close the opened menu"
+    />
+  )
 
   // // set menuOpen to opposite
   const handleClick = () => {
