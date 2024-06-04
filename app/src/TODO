@@ -1,0 +1,5 @@
+* accessibility for the hamburger icon
+* ellipsis for the text body
+* add readme with instructions for how to setup and run the application
+* remove console log of environmet
+* test signup/login 
