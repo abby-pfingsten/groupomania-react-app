@@ -3,7 +3,7 @@
 
 ## Setup the Environment
 1. After cloning the repository you will see two environment files (`.env-sample`) -- one is located in `app/` and the other in `app/src/backend`
-2. You don't need to do anything to the one in `app/` but fill in the `CHANGE_ME` to your sequelize user name and password 
+2. You don't need to do anything to the one in `app/` but fill in the `CHANGE_ME` to your mysql user name and password 
 
 ## Running the App
 
