@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/groupomania-react-app/static/css/main.f49525d2.css",
+    "main.js": "/groupomania-react-app/static/js/main.b9073f0f.js",
+    "static/media/icon-left-font-monochrome-black.svg": "/groupomania-react-app/static/media/icon-left-font-monochrome-black.19aa0a7c985187a122d3244aba7e11d0.svg",
+    "static/media/icon.svg": "/groupomania-react-app/static/media/icon.df011b719943d37c30ce5f1d65b001d5.svg",
+    "index.html": "/groupomania-react-app/index.html",
+    "main.f49525d2.css.map": "/groupomania-react-app/static/css/main.f49525d2.css.map",
+    "main.b9073f0f.js.map": "/groupomania-react-app/static/js/main.b9073f0f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f49525d2.css",
+    "static/js/main.b9073f0f.js"
+  ]
+}
